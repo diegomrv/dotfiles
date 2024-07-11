@@ -1,0 +1,4 @@
+alias zconfig="nvim ~/.zshrc"
+alias zrel="omz reload"
+alias artisan="php artisan"
+alias releasethekraken="ssh wolfius@10.0.0.30"
