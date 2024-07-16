@@ -31,7 +31,7 @@ fi
 
 DOTFILES_DIR="$HOME/dotfiles"
 FILES=".vimrc .zshrc .hunk-mod.omp.json .aliases" # list of files to symlink in homedir
-FOLDERS=".config/nvim .vim .fonts"# list of folders to symlink in homedir
+FOLDERS=".config/nvim .vim .fonts" # list of folders to symlink in homedir
 
 # Create symlinks
 for FOLDER in $FOLDERS; do
@@ -64,12 +64,6 @@ fi
 if [[ "$SHELL" != *"zsh"* ]]; then
     echo "Changing default shell to zsh..."
     chsh -s $(which zsh)
-fi
-
-# Install oh-my-zsh
-if ! command_exists omz; then
-    echo "oh-my-zsh is not installed. Attempting to install..."
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 fi
 
 # Install oh-my-posh
