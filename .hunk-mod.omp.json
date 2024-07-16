@@ -167,5 +167,8 @@
       ],
       "newline": true
     }
-  ]
+  ],
+  "transient_prompt": {
+    "template": "❯ "
+  }
 }
