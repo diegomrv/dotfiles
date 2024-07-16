@@ -5,6 +5,12 @@ command_exists() {
     command -v "$1" >/dev/null 2>&1
 }
 
+# Install brew if not present
+if ! command_exists brew; then
+    echo "Homebrew is not installed. Attempting to install..."
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+fi
+
 # Check and install zsh if not present
 if ! command_exists zsh; then
     echo "zsh is not installed. Attempting to install..."
@@ -24,7 +30,14 @@ if ! command_exists zsh; then
 fi
 
 DOTFILES_DIR="$HOME/dotfiles"
-FILES=".vimrc .vim .zshrc .hunk-mod.omp.json .fonts .aliases"    # list of files/folders to symlink in homedir
+FILES=".vimrc .zshrc .hunk-mod.omp.json .aliases" # list of files to symlink in homedir
+FOLDERS=".config/nvim .vim .fonts"# list of folders to symlink in homedir
+
+# Create symlinks
+for FOLDER in $FOLDERS; do
+    echo "Creating symlink to $FOLDER in home directory."
+    ln -s $DOTFILES_DIR/$FOLDER $HOME/$FOLDER
+done
 
 # Create symlinks
 for FILE in $FILES; do
@@ -47,10 +60,22 @@ else
     exit 1
 fi
 
-echo "Dotfiles installation complete!"
-
-# Optionally, set zsh as the default shell
+# Set zsh as the default shell
 if [[ "$SHELL" != *"zsh"* ]]; then
     echo "Changing default shell to zsh..."
     chsh -s $(which zsh)
 fi
+
+# Install oh-my-zsh
+if ! command_exists omz; then
+    echo "oh-my-zsh is not installed. Attempting to install..."
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+fi
+
+# Install oh-my-posh
+if ! command_exists oh-my-posh; then
+    echo "oh-my-posh is not installed. Attempting to install..."
+    brew install oh-my-posh
+fi
+
+echo "Dotfiles installation complete!"
