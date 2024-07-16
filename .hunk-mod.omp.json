@@ -168,6 +168,11 @@
       "newline": true
     }
   ],
+  "secondary_prompt": {
+    "background": "transparent",
+    "foreground": "magenta",
+    "template": "❯❯ "
+  },
   "transient_prompt": {
     "template": "❯ "
   }
