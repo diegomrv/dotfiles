@@ -46,15 +46,19 @@ if [[ "$SHELL" != *"zsh"* ]]; then
 fi
 
 # Install oh-my-posh
-if ! command_exists oh-my-posh; then
-    echo "oh-my-posh is not installed. Attempting to install..."
-    brew install oh-my-posh
-fi
+brew list oh-my-posh &>/dev/null || brew install oh-my-posh && echo "oh-my-posh installed"
 
 # Install zsh-autosuggestions
-brew list zsh-autosuggestions &>/dev/null || brew install zsh-autosuggestions
+brew list zsh-autosuggestions &>/dev/null || brew install zsh-autosuggestions && echo "zsh-autosuggestions installed"
+
+# Install eza
+brew list eza &>/dev/null || brew install eza && echo "eza installed"
+
+# Install zoxide
+brew list zoxide &>/dev/null || brew install zoxide && echo "zoxide installed"
 
 if command_exists stow; then
+  echo "Adding symlinks with stow..."
   stow --adopt .
 fi
 

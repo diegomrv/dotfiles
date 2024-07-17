@@ -1,4 +1,8 @@
 alias zconfig="nvim ~/.zshrc"
 alias zrel="source ~/.zshrc"
+
 alias artisan="php artisan"
 alias releasethekraken="ssh wolfius@10.0.0.30"
+
+alias ls="eza --icons --group-directories-first"
+alias ll="eza --icons --group-directories-first -la"

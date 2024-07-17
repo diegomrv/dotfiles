@@ -1,6 +1,3 @@
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
-
 # Source system-specific file
 if [[ $(uname) == "Darwin" ]]; then
     source "$HOME/.zsh/macos.zsh"
@@ -45,3 +42,5 @@ add-zsh-hook chpwd load-nvmrc
 load-nvmrc
 
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+eval "$(zoxide init --cmd cd zsh)"
