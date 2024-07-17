@@ -1,0 +1,27 @@
+install.sh
+.idea
+
+# Default GNU Stow ignore file. Recreating it here because Stow ignores it when
+# creating our own .stow-local-ignore file.
+
+RCS
+.+,v
+
+CVS
+\.\#.+       # CVS conflict files / emacs lock files
+\.cvsignore
+
+\.svn
+_darcs
+\.hg
+
+\.git
+\.gitignore
+\.gitmodules
+
+.+~          # emacs backup files
+\#.*\#       # emacs autosave files
+
+^/README.*
+^/LICENSE.*
+^/COPYING

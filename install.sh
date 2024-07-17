@@ -19,45 +19,24 @@ if ! command_exists zsh; then
         sudo apt-get install -y zsh
     elif command_exists brew; then
         brew install zsh
-    elif command_exists dnf; then
-        sudo dnf install -y zsh
-    elif command_exists yum; then
-        sudo yum install -y zsh
     else
         echo "Unable to install zsh. Please install it manually."
         exit 1
     fi
 fi
 
-DOTFILES_DIR="$HOME/dotfiles"
-FILES=".vimrc .zshrc .hunk-mod.omp.json .aliases" # list of files to symlink in homedir
-FOLDERS=".config/nvim .vim .fonts" # list of folders to symlink in homedir
-
-# Create symlinks
-for FOLDER in $FOLDERS; do
-    echo "Creating symlink to $FOLDER in home directory."
-    ln -s $DOTFILES_DIR/$FOLDER $HOME/$FOLDER
-done
-
-# Create symlinks
-for FILE in $FILES; do
-    echo "Creating symlink to $FILE in home directory."
-    ln -s $DOTFILES_DIR/$FILE $HOME/$FILE
-done
-
-# Create zsh directory if it doesn't exist
-mkdir -p $HOME/.zsh
-
-platform=$(uname);
-
-# Symlink system-specific zsh file
-if [[ $platform == "Darwin" ]]; then
-    ln -sf $DOTFILES_DIR/zsh/macos.zsh $HOME/.zsh/system_specific.zsh
-elif [[ $platform == "Linux" ]]; then
-    ln -sf $DOTFILES_DIR/zsh/ubuntu.zsh $HOME/.zsh/system_specific.zsh
-else
-    echo "Unsupported operating system"
-    exit 1
+# Check and install stow if not present
+if ! command_exists stow; then
+    echo "stow is not installed. Attempting to install..."
+    if command_exists apt-get; then
+        sudo apt-get update
+        sudo apt-get install -y stow
+    elif command_exists brew; then
+        brew install stow
+    else
+        echo "Unable to install stow. Please install it manually."
+        exit 1
+    fi
 fi
 
 # Set zsh as the default shell
@@ -70,6 +49,13 @@ fi
 if ! command_exists oh-my-posh; then
     echo "oh-my-posh is not installed. Attempting to install..."
     brew install oh-my-posh
+fi
+
+# Install zsh-autosuggestions
+brew list zsh-autosuggestions &>/dev/null || brew install zsh-autosuggestions
+
+if command_exists stow; then
+  stow --adopt .
 fi
 
 echo "Dotfiles installation complete!"
