@@ -1,4 +1,6 @@
 # Separate ZSH configuration for MacOS
+export PATH="/opt/homebrew/bin:$PATH"
+export PATH="$PATH:/opt/homebrew/sbin"
 export PATH="$PATH:$HOME/.composer/vendor/bin"
 
 # bun completions
