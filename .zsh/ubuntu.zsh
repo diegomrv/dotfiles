@@ -12,3 +12,5 @@ esac
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 eval "$(oh-my-posh init zsh --config ~/.hunk-mod.omp.json)"
+
+export WARP_ENABLE_WAYLAND=1
