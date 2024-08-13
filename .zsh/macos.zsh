@@ -14,3 +14,11 @@ if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
   #eval "$(oh-my-posh init zsh --config ~/.M365Princess-mod.omp.json)"
   eval "$(oh-my-posh init zsh --config ~/.hunk-mod.omp.json)"
 fi
+
+# pnpm
+export PNPM_HOME="$HOME/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
