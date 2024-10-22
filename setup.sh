@@ -50,4 +50,10 @@ if ! command_exists nvm; then
   /bin/bash -c "$(curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh)"
 fi
 
+# Install pnpm
+if ! command_exists pnpm; then
+    echo "PNPM not installed. Attempting to install..."
+    curl -fsSL https://get.pnpm.io/install.sh | ENV="$HOME/.bashrc" SHELL="$(which bash)" sh -
+fi
+
 echo "Run install.sh after this!"

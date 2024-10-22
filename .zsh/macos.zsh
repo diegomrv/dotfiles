@@ -4,7 +4,7 @@ export PATH="$PATH:/opt/homebrew/sbin"
 export PATH="$PATH:$HOME/.composer/vendor/bin"
 
 # bun completions
-[ -s "/Users/wolfius/.bun/_bun" ] && source "/Users/wolfius/.bun/_bun"
+[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
 
 # bun
 export BUN_INSTALL="$HOME/.bun"
