@@ -2,6 +2,8 @@ alias zconfig="nvim ~/.zshrc"
 alias zrel="source ~/.zshrc"
 
 alias artisan="php artisan"
+alias sail='sh $([ -f sail ] && echo sail || echo vendor/bin/sail)'
+
 alias releasethekraken="ssh wolfius@10.0.0.30"
 alias vi="nvim"
 
