@@ -17,6 +17,9 @@ brew list eza &>/dev/null || brew install eza && echo "eza installed"
 # Install zoxide
 brew list zoxide &>/dev/null || brew install zoxide && echo "zoxide installed"
 
+# Install neovim
+brew list neovim &>/dev/null || brew install neovim && echo "neovim installed"
+
 if command_exists stow; then
   echo "Adding symlinks with stow..."
   stow --adopt .

@@ -2,3 +2,7 @@
 .Trash-*
 .DS_Store
 .uuid
+
+# Specific stuff
+.config/raycast
+.config/jgit

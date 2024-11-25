@@ -56,4 +56,10 @@ if ! command_exists pnpm; then
     curl -fsSL https://get.pnpm.io/install.sh | ENV="$HOME/.bashrc" SHELL="$(which bash)" sh -
 fi
 
+#install deno
+if ! command_exists deno; then
+  echo "Deno not installed. Attempting to install..."
+  curl -fsSL https://deno.land/install.sh | sh
+fi
+
 echo "Run install.sh after this!"
