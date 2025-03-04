@@ -11,3 +11,7 @@ alias ls="eza --icons --group-directories-first"
 alias ll="eza --icons --group-directories-first -la"
 
 alias storm="open -a 'phpstorm.app' ."
+
+alias setgpulimits='sudo sysctl iogpu.wired_lwm_mb=33000 && sudo sysctl iogpu.wired_limit_mb=15000'
+
+alias convertvideo='convert_video'

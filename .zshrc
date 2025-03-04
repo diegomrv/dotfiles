@@ -51,3 +51,14 @@ add-zsh-hook chpwd load-nvmrc
 load-nvmrc
 
 . "$HOME/.deno/env"
+
+convert_video() {
+    input_file="$1"
+    output_file="${input_file%.*}_h265.mp4"
+    
+    ffmpeg -i "$input_file" -c:v libx265 -preset medium -crf 23 \
+    -c:a copy \
+    -map_metadata 0 \
+    -movflags +use_metadata_moov \
+    "$output_file"
+}
