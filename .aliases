@@ -15,3 +15,6 @@ alias storm="open -a 'phpstorm.app' ."
 alias setgpulimits='sudo sysctl iogpu.wired_lwm_mb=33000 && sudo sysctl iogpu.wired_limit_mb=15000'
 
 alias convertvideo='convert_video'
+alias convertvideohdr='convert_video_hdr_aggresive'
+
+alias claude="~/.claude/local/claude"

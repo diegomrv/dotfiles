@@ -54,11 +54,57 @@ load-nvmrc
 
 convert_video() {
     input_file="$1"
-    output_file="${input_file%.*}_h265.mp4"
+    output_file="${input_file%.*}_hdr.mp4"
     
-    ffmpeg -i "$input_file" -c:v libx265 -preset medium -crf 23 \
+    # Detect HDR metadata
+    hdr_info=$(ffprobe -v error -select_streams v:0 -show_entries stream=color_space,color_transfer,color_primaries -of default=noprint_wrappers=1 "$input_file")
+    
+    # Base conversion command
+    ffmpeg_cmd=(
+        ffmpeg -i "$input_file"
+        -c:v libx265
+        -tag:v hvc1
+        -preset medium
+        -crf 23
+        -c:a copy
+        -map_metadata 0
+        -movflags +faststart
+    )
+
+    # HDR-specific parameters
+    if echo "$hdr_info" | grep -q "color_transfer=smpte2084\|color_space=bt2020nc\|color_primaries=bt2020"; then
+        echo "Detected HDR source. Applying HDR-aware conversion."
+        ffmpeg_cmd+=(
+            # HDR-specific color handling
+            -color_primaries bt2020
+            -color_trc smpte2084
+            -colorspace bt2020nc
+            # Optional: tone-mapping for SDR displays
+            -vf "zscale=t=linear:npl=100,format=yuv420p,zscale=p=bt709:t=linear:m=bt2020nc:r=tv,format=yuv420p"
+        )
+    fi
+
+    # Complete the conversion
+    "${ffmpeg_cmd[@]}" "$output_file"
+}
+
+# Alternative function with more aggressive tone-mapping
+convert_video_hdr_aggressive() {
+    input_file="$1"
+    output_file="${input_file%.*}_hdr_mapped.mp4"
+    
+    ffmpeg -i "$input_file" \
+    -c:v libx265 \
+    -tag:v hvc1 \
+    -preset medium \
+    -crf 23 \
     -c:a copy \
     -map_metadata 0 \
-    -movflags +use_metadata_moov \
+    -movflags +faststart \
+    -vf "zscale=t=linear:npl=100,tonemap=tonemap=hable:desat=0,zscale=p=bt709:t=linear:m=bt2020nc:r=tv" \
     "$output_file"
 }
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/drodriguez/.lmstudio/bin"
+# End of LM Studio CLI section

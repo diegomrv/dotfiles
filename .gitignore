@@ -6,3 +6,5 @@
 # Specific stuff
 .config/raycast
 .config/jgit
+.config/valet
+.config/configstore
