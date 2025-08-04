@@ -4,7 +4,22 @@
 .uuid
 
 # Specific stuff
-.config/raycast
-.config/jgit
-.config/valet
-.config/configstore
+.config/raycast/
+.config/jgit/
+.config/valet/
+.config/configstore/
+.config/psysh/psysh_history
+.claude/
+
+# Runtime files
+*.log
+*.sock
+
+# macOS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db

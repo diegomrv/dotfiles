@@ -17,7 +17,9 @@ export EDITOR='nvim'
 
 source ~/.aliases
 
-source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+if command -v brew >/dev/null 2>&1; then
+  source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+fi
 
 eval "$(zoxide init --cmd cd zsh)"
 
@@ -50,7 +52,7 @@ load-nvmrc() {
 add-zsh-hook chpwd load-nvmrc
 load-nvmrc
 
-. "$HOME/.deno/env"
+[ -f "$HOME/.deno/env" ] && . "$HOME/.deno/env"
 
 convert_video() {
     input_file="$1"
