@@ -108,5 +108,8 @@ convert_video_hdr_aggressive() {
 }
 
 # Added by LM Studio CLI (lms)
-export PATH="$PATH:/Users/drodriguez/.lmstudio/bin"
+export PATH="$PATH:$HOME/.lmstudio/bin"
 # End of LM Studio CLI section
+
+# Added by CodeRabbit CLI installer
+export PATH="$HOME/.local/bin:$PATH"
