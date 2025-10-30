@@ -6,7 +6,7 @@
     "background": "transparent"
   },
   "transient_prompt": {
-    "template": "❯ "
+    "template": "{{now | date \"3:04:05 pm\"}} ❯ "
   },
   "blocks": [
     {
