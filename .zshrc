@@ -112,4 +112,8 @@ export PATH="$PATH:$HOME/.lmstudio/bin"
 # End of LM Studio CLI section
 
 # Added by CodeRabbit CLI installer
+<<<<<<< Updated upstream
 export PATH="$HOME/.local/bin:$PATH"
+=======
+export PATH="/Users/wolfius/.local/bin:$PATH"
+>>>>>>> Stashed changes
