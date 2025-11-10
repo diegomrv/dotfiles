@@ -17,4 +17,3 @@ alias setgpulimits='sudo sysctl iogpu.wired_lwm_mb=33000 && sudo sysctl iogpu.wi
 alias convertvideo='convert_video'
 alias convertvideohdr='convert_video_hdr_aggressive'
 
-alias claude="~/.claude/local/claude"
