@@ -15,6 +15,9 @@ fi
 
 export EDITOR='nvim'
 
+# Initialize zsh completion system
+autoload -Uz compinit && compinit
+
 source ~/.aliases
 
 if command -v brew >/dev/null 2>&1; then
@@ -113,3 +116,11 @@ export PATH="$PATH:$HOME/.lmstudio/bin"
 
 # Added by CodeRabbit CLI installer
 export PATH="$HOME/.local/bin:$PATH"
+
+
+# Herd injected PHP 8.4 configuration.
+export HERD_PHP_84_INI_SCAN_DIR="/Users/wolfius/Library/Application Support/Herd/config/php/84/"
+
+
+# Herd injected PHP binary.
+export PATH="/Users/wolfius/Library/Application Support/Herd/bin/":$PATH
