@@ -4,7 +4,13 @@ alias zrel="source ~/.zshrc"
 alias artisan="php artisan"
 alias sail='sh $([ -f sail ] && echo sail || echo vendor/bin/sail)'
 
-alias releasethekraken="ssh wolfius@10.0.0.30"
+releasethekraken() {
+  if ping -c 1 -W 1 10.0.0.30 &>/dev/null; then
+    ssh wolfius@10.0.0.30 "$@"
+  else
+    ssh wolfius@kraken "$@"
+  fi
+}
 alias vi="nvim"
 
 alias ls="eza --icons --group-directories-first"
@@ -17,3 +23,4 @@ alias setgpulimits='sudo sysctl iogpu.wired_lwm_mb=33000 && sudo sysctl iogpu.wi
 alias convertvideo='convert_video'
 alias convertvideohdr='convert_video_hdr_aggressive'
 
+alias claude="/Users/wolfius/.claude/local/claude"
