@@ -124,3 +124,7 @@ load-nvmrc
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
 
 fastfetch
+
+
+# Herd injected PHP 8.4 configuration.
+export HERD_PHP_84_INI_SCAN_DIR="/Users/drodriguez/Library/Application Support/Herd/config/php/84/"

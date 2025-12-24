@@ -27,3 +27,6 @@ _darcs
 ^/README.*
 ^/LICENSE.*
 ^/COPYING
+
+# Machine-specific config (not symlinked)
+\.zshrc\.local

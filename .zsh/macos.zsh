@@ -4,7 +4,7 @@ export PATH="$PATH:/opt/homebrew/sbin"
 export PATH="$PATH:$HOME/.composer/vendor/bin"
 
 if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
-  eval "$(oh-my-posh init zsh --config ~/.hunk-mod.omp.json)"
+  eval "$(oh-my-posh init zsh --config ~/.wolfius.omp.json)"
 fi
 
 # pnpm

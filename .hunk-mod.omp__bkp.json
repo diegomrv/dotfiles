@@ -14,8 +14,7 @@
       "alignment": "left",
       "segments": [
         {
-          "properties": {
-            "cache_duration": "none",
+          "options": {
             "windows": "\ue62a"
           },
           "leading_diamond": "\ue0b6",
@@ -26,8 +25,7 @@
           "style": "diamond"
         },
         {
-          "properties": {
-            "cache_duration": "none",
+          "options": {
             "style": "full"
           },
           "template": "{{ .Path }} ",
@@ -38,9 +36,6 @@
           "style": "powerline"
         },
         {
-          "properties": {
-            "cache_duration": "none"
-          },
           "template": " \ue718 {{ if .PackageManagerIcon }}{{ .PackageManagerIcon }} {{ end }}{{ .Full }} ",
           "foreground": "#ffffff",
           "powerline_symbol": "\ue0b0",
@@ -49,8 +44,7 @@
           "style": "powerline"
         },
         {
-          "properties": {
-            "cache_duration": "none",
+          "options": {
             "fetch_version": false
           },
           "template": " \ue235 {{ if .Error }}{{ .Error }}{{ else }}{{ if .Venv }}{{ .Venv }} {{ end }}{{ .Full }}{{ end }} ",
@@ -61,8 +55,7 @@
           "style": "powerline"
         },
         {
-          "properties": {
-            "cache_duration": "none",
+          "options": {
             "fetch_status": true,
             "fetch_upstream_icon": true
           },
@@ -86,9 +79,8 @@
       "alignment": "right",
       "segments": [
         {
-          "properties": {
-            "always_enabled": true,
-            "cache_duration": "none"
+          "options": {
+            "always_enabled": true
           },
           "template": " {{ .FormattedMs }} ",
           "foreground": "#ffffff",
@@ -99,9 +91,6 @@
           "invert_powerline": true
         },
         {
-          "properties": {
-            "cache_duration": "none"
-          },
           "template": " ⚡",
           "foreground": "#FFD700",
           "powerline_symbol": "\ue0b2",
@@ -111,9 +100,6 @@
           "invert_powerline": true
         },
         {
-          "properties": {
-            "cache_duration": "none"
-          },
           "template": " {{ .UserName }} ",
           "foreground": "#ffffff",
           "powerline_symbol": "\ue0b2",
@@ -123,8 +109,7 @@
           "invert_powerline": true
         },
         {
-          "properties": {
-            "cache_duration": "none",
+          "options": {
             "time_format": "3:04:05 PM"
           },
           "trailing_diamond": "\ue0b4",
@@ -142,17 +127,11 @@
       "alignment": "left",
       "segments": [
         {
-          "properties": {
-            "cache_duration": "none"
-          },
           "template": " \uf0e7 ",
           "type": "root",
           "style": "plain"
         },
         {
-          "properties": {
-            "cache_duration": "none"
-          },
           "template": "<#69FF94>❯</>",
           "foreground": "#ffffff",
           "type": "text",
@@ -162,7 +141,7 @@
       "newline": true
     }
   ],
-  "version": 3,
+  "version": 4,
   "auto_upgrade": true,
   "final_space": true
 }
