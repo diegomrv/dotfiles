@@ -25,3 +25,6 @@ ehthumbs.db
 Thumbs.db
 
 .config/syncthing
+
+# Machine-specific shell config
+.zshrc.local

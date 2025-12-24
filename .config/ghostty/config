@@ -1,2 +1,4 @@
 shell-integration-features = ssh-terminfo
 keybind = shift+enter=text:\x1b\r
+#theme = Catppuccin Frappe
+theme = Hopscotch.256

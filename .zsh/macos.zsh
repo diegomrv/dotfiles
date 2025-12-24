@@ -3,13 +3,6 @@ export PATH="/opt/homebrew/bin:$PATH"
 export PATH="$PATH:/opt/homebrew/sbin"
 export PATH="$PATH:$HOME/.composer/vendor/bin"
 
-# bun completions
-[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
-
-# bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
-
 if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
   eval "$(oh-my-posh init zsh --config ~/.hunk-mod.omp.json)"
 fi

@@ -117,9 +117,7 @@ load-nvmrc() {
 add-zsh-hook chpwd load-nvmrc
 load-nvmrc
 
-# Herd injected PHP 8.4 configuration.
-export HERD_PHP_84_INI_SCAN_DIR="$HOME/Library/Application Support/Herd/config/php/84/"
+# Source machine-local config (for Herd, etc.)
+[[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
 
-
-# Herd injected PHP binary.
-export PATH="$HOME/Library/Application Support/Herd/bin/":$PATH
+fastfetch
