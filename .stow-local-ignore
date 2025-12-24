@@ -2,6 +2,10 @@ setup.sh
 install.sh
 .idea
 .uuid
+.DS_Store
+.hunk-mod.omp__bkp.json
+CLAUDE.md
+\.claude
 
 # Default GNU Stow ignore file. Recreating it here because Stow ignores it when
 # creating our own .stow-local-ignore file.
