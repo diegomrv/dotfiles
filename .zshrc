@@ -24,7 +24,10 @@ if command -v brew >/dev/null 2>&1; then
   source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 fi
 
-eval "$(zoxide init --cmd cd zsh)"
+# Only init zoxide in interactive shells (prevents errors in scripts/subshells)
+if [[ $- == *i* ]]; then
+  eval "$(zoxide init --cmd cd zsh)"
+fi
 
 [ -f "$HOME/.deno/env" ] && . "$HOME/.deno/env"
 
