@@ -1,65 +1,109 @@
 #!/bin/bash
+set -euo pipefail
 
-# Function to check if a command exists
+# Helper function
 command_exists() {
-    command -v "$1" >/dev/null 2>&1
+  command -v "$1" >/dev/null 2>&1
 }
 
-# Install brew if not present
+# =============================================================================
+# Homebrew
+# =============================================================================
+echo ""
+echo "=== Homebrew ==="
+
 if ! command_exists brew; then
-    echo "Homebrew is not installed. Attempting to install..."
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  echo "Installing Homebrew..."
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+  # Set up PATH for this session (needed on Linux and Apple Silicon)
+  if [[ -f /home/linuxbrew/.linuxbrew/bin/brew ]]; then
+    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+  elif [[ -f /opt/homebrew/bin/brew ]]; then
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+  fi
+else
+  echo "Homebrew already installed"
 fi
 
-# Check and install zsh if not present
+# =============================================================================
+# Zsh
+# =============================================================================
+echo ""
+echo "=== Zsh ==="
+
 if ! command_exists zsh; then
-    echo "zsh is not installed. Attempting to install..."
-    if command_exists apt-get; then
-        sudo apt-get update
-        sudo apt-get install -y zsh
-    elif command_exists brew; then
-        brew install zsh
-    else
-        echo "Unable to install zsh. Please install it manually."
-        exit 1
-    fi
+  echo "Installing zsh..."
+  if command_exists apt-get; then
+    sudo apt-get update
+    sudo apt-get install -y zsh
+  elif command_exists brew; then
+    brew install zsh
+  else
+    echo "Error: Unable to install zsh. Please install it manually."
+    exit 1
+  fi
+else
+  echo "Zsh already installed"
 fi
 
-# Set zsh as the default shell
 if [[ "$SHELL" != *"zsh"* ]]; then
-    echo "Changing default shell to zsh..."
-    chsh -s $(which zsh)
+  echo "Setting zsh as default shell..."
+  chsh -s "$(which zsh)"
+else
+  echo "Zsh is already the default shell"
 fi
 
-# Check and install stow if not present
+# =============================================================================
+# Stow
+# =============================================================================
+echo ""
+echo "=== Stow ==="
+
 if ! command_exists stow; then
-    echo "stow is not installed. Attempting to install..."
-    if command_exists apt-get; then
-        sudo apt-get update
-        sudo apt-get install -y stow
-    elif command_exists brew; then
-        brew install stow
-    else
-        echo "Unable to install stow. Please install it manually."
-        exit 1
-    fi
+  echo "Installing stow..."
+  if command_exists apt-get; then
+    sudo apt-get update
+    sudo apt-get install -y stow
+  elif command_exists brew; then
+    brew install stow
+  else
+    echo "Error: Unable to install stow. Please install it manually."
+    exit 1
+  fi
+else
+  echo "Stow already installed"
 fi
 
-if ! command_exists nvm; then
-  echo "NVM not installed. Attempting to install..."
-  /bin/bash -c "$(curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh)"
+# =============================================================================
+# NVM (Node Version Manager)
+# =============================================================================
+echo ""
+echo "=== NVM ==="
+
+if [[ ! -d "$HOME/.nvm" ]]; then
+  echo "Installing NVM..."
+  /bin/bash -c "$(curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh)"
+else
+  echo "NVM already installed"
 fi
 
-# Install pnpm
+# =============================================================================
+# PNPM
+# =============================================================================
+echo ""
+echo "=== PNPM ==="
+
 if ! command_exists pnpm; then
-    echo "PNPM not installed. Attempting to install..."
-    curl -fsSL https://get.pnpm.io/install.sh | ENV="$HOME/.bashrc" SHELL="$(which bash)" sh -
+  echo "Installing PNPM..."
+  curl -fsSL https://get.pnpm.io/install.sh | ENV="$HOME/.zshrc" SHELL="$(which zsh)" sh -
+else
+  echo "PNPM already installed"
 fi
 
-#install deno
-if ! command_exists deno; then
-  echo "Deno not installed. Attempting to install..."
-  curl -fsSL https://deno.land/install.sh | sh
-fi
-
-echo "Run install.sh after this!"
+# =============================================================================
+# Done
+# =============================================================================
+echo ""
+echo "=== Setup complete ==="
+echo "Run ./install.sh to install packages and apply dotfiles"

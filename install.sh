@@ -1,28 +1,57 @@
 #!/bin/bash
+set -euo pipefail
 
-# Function to check if a command exists
-command_exists() {
-    command -v "$1" >/dev/null 2>&1
-}
-
-# Install oh-my-posh
-brew list oh-my-posh &>/dev/null || brew install oh-my-posh && echo "oh-my-posh installed"
-
-# Install zsh-autosuggestions
-brew list zsh-autosuggestions &>/dev/null || brew install zsh-autosuggestions && echo "zsh-autosuggestions installed"
-
-# Install eza
-brew list eza &>/dev/null || brew install eza && echo "eza installed"
-
-# Install zoxide
-brew list zoxide &>/dev/null || brew install zoxide && echo "zoxide installed"
-
-# Install neovim
-brew list neovim &>/dev/null || brew install neovim && echo "neovim installed"
-
-if command_exists stow; then
-  echo "Adding symlinks with stow..."
-  stow --adopt .
+# =============================================================================
+# Preflight check
+# =============================================================================
+if ! command -v brew &>/dev/null; then
+  echo "Error: Homebrew not found. Run ./setup.sh first."
+  exit 1
 fi
 
-echo "Dotfiles installation complete!"
+# =============================================================================
+# Brew packages
+# =============================================================================
+echo ""
+echo "=== Installing Homebrew packages ==="
+
+PACKAGES=(
+  oh-my-posh
+  zsh-autosuggestions
+  zsh-syntax-highlighting
+  zsh-completions
+  eza
+  zoxide
+  neovim
+  fastfetch
+  ffmpeg
+)
+
+for pkg in "${PACKAGES[@]}"; do
+  if brew list "$pkg" &>/dev/null; then
+    echo "$pkg already installed"
+  else
+    echo "Installing $pkg..."
+    brew install "$pkg"
+  fi
+done
+
+# =============================================================================
+# Stow dotfiles
+# =============================================================================
+echo ""
+echo "=== Applying dotfiles with Stow ==="
+
+if command -v stow &>/dev/null; then
+  stow --adopt .
+  echo "Symlinks created"
+else
+  echo "Warning: stow not found, skipping dotfiles linking"
+fi
+
+# =============================================================================
+# Done
+# =============================================================================
+echo ""
+echo "=== Installation complete ==="
+echo "Restart your terminal or run: source ~/.zshrc"
