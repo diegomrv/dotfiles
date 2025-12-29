@@ -3,8 +3,8 @@
   "logo": {
     "padding": {
       "top": 2,
-      "right": 10,
-      "left": 8
+      "right": 6,
+      "left": 4
     }
   },
   "modules": [
