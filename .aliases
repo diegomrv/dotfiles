@@ -11,6 +11,14 @@ releasethekraken() {
     ssh wolfius@kraken "$@"
   fi
 }
+
+unleashragnarok() {
+  if ping -c 1 -W 1 10.0.0.2 &>/dev/null; then
+    ssh wolfius@10.0.0.2 "$@"
+  else
+    ssh wolfius@ragnarok "$@"
+  fi
+}
 alias vi="nvim"
 
 alias ls="eza --icons --group-directories-first"
