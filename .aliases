@@ -19,6 +19,7 @@ unleashragnarok() {
     ssh wolfius@ragnarok "$@"
   fi
 }
+
 alias vi="nvim"
 
 alias ls="eza --icons --group-directories-first"
@@ -29,3 +30,11 @@ alias storm="open -a 'phpstorm.app' ."
 alias convertvideo='convert_video'
 alias convertvideohdr='convert_video_hdr_aggressive'
 
+alias ga='git add'
+alias gs='git status'
+alias gcm='git commit -m'
+alias gcb='git checkout -b'
+alias gco='git checkout'
+alias gf='git fetch'
+alias gpl='git pull'
+alias gp='git push'
