@@ -38,8 +38,6 @@ fi
 
 # Additional PATH entries
 export PATH="$HOME/.local/bin:$PATH"         # CodeRabbit CLI, pipx, etc.
-export PATH="$PATH:$HOME/.lmstudio/bin"      # LM Studio CLI
-
 # Source custom functions
 [[ -f "$HOME/.zsh/functions/video.zsh" ]] && source "$HOME/.zsh/functions/video.zsh"
 

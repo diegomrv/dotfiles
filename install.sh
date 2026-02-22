@@ -16,6 +16,7 @@ echo ""
 echo "=== Installing Homebrew packages ==="
 
 PACKAGES=(
+  git
   oh-my-posh
   zsh-autosuggestions
   zsh-syntax-highlighting
@@ -35,6 +36,10 @@ for pkg in "${PACKAGES[@]}"; do
     brew install "$pkg"
   fi
 done
+
+# GUI apps referenced in shell config (install manually or uncomment)
+# brew install --cask herd         # also manages PHP and Composer
+# brew install --cask phpstorm
 
 # =============================================================================
 # Stow dotfiles

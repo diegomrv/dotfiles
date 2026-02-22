@@ -11,3 +11,4 @@ window-padding-y = 8
 shell-integration-features = no-cursor
 cursor-style = block
 window-save-state = always
+auto-update-channel = tip

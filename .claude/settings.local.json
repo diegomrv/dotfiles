@@ -1,0 +1,19 @@
+{
+  "permissions": {
+    "allow": [
+      "WebSearch",
+      "Bash(echo:*)",
+      "Bash(node --version:*)",
+      "Bash(nvm --version:*)",
+      "Bash(stow:*)",
+      "Bash(cat:*)",
+      "mcp__context7__get-library-docs",
+      "Bash(mkdir:*)",
+      "Bash(brew list:*)",
+      "mcp__context7__resolve-library-id",
+      "mcp__context7__query-docs"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

@@ -9,7 +9,7 @@
 .config/valet/
 .config/configstore/
 .config/psysh/psysh_history
-.claude/
+.config/zed/prompts/
 
 # Runtime files
 *.log
