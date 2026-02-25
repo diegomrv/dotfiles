@@ -1,0 +1,10 @@
+# This is Git's per-user configuration file.
+[user]
+name = Diego Rodríguez
+email = diego@strangepixels.co
+[push]
+	autoSetupRemote = true
+[pull]
+	rebase = true
+[init]
+	defaultBranch = main
