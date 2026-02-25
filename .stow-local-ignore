@@ -6,6 +6,7 @@ install.sh
 .hunk-mod.omp__bkp.json
 CLAUDE.md
 \.claude
+claude-global
 
 # Default GNU Stow ignore file. Recreating it here because Stow ignores it when
 # creating our own .stow-local-ignore file.

@@ -12,3 +12,6 @@ shell-integration-features = no-cursor
 cursor-style = block
 window-save-state = always
 auto-update-channel = tip
+window-inherit-working-directory = false
+tab-inherit-working-directory = false
+split-inherit-working-directory = true

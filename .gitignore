@@ -27,3 +27,6 @@ Thumbs.db
 
 # Machine-specific shell config
 .zshrc.local
+
+# Project-level Claude settings (not global)
+.claude/settings.local.json

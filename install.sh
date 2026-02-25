@@ -49,6 +49,7 @@ echo "=== Applying dotfiles with Stow ==="
 
 if command -v stow &>/dev/null; then
   stow --adopt .
+  stow --adopt claude-global
   echo "Symlinks created"
 else
   echo "Warning: stow not found, skipping dotfiles linking"

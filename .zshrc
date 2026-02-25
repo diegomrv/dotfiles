@@ -14,6 +14,7 @@ fi
 [ "$SAVEHIST" -lt 10000 ] && SAVEHIST=10000
 
 export EDITOR='nvim'
+export LEDGER_FILE="$HOME/finance/.hledger.journal"
 
 # Initialize zsh completion system with additional completions
 if command -v brew >/dev/null 2>&1; then
