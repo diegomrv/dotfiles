@@ -13,10 +13,9 @@
     "context7@claude-plugins-official": true,
     "feature-dev@claude-plugins-official": true,
     "pr-review-toolkit@claude-plugins-official": true,
-    "github@claude-plugins-official": true
+    "claude-md-management@claude-plugins-official": true
   },
   "feedbackSurveyState": {
     "lastShownTime": 1754321351818
-  },
-  "effortLevel": "medium"
+  }
 }
