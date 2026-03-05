@@ -18,6 +18,12 @@
     "figma@claude-plugins-official": true,
     "pr-review-toolkit@claude-plugins-official": true,
     "php-lsp@claude-plugins-official": true,
-    "laravel-boost@claude-plugins-official": true
+    "laravel-boost@claude-plugins-official": true,
+    "claude-code-setup@claude-plugins-official": true
+  },
+  "extraKnownMarketplaces": {},
+  "autoUpdatesChannel": "stable",
+  "feedbackSurveyState": {
+    "lastShownTime": 1754321351818
   }
 }
