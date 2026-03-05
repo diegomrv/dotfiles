@@ -38,7 +38,7 @@ stow -n -v .
 
 ### Editor Configuration
 - `.vimrc` - Traditional Vim with molokai theme
-- `.config/nvim/` - Neovim using NvChad framework with Lazy.nvim
+- `.config/nvim/` - Neovim using LazyVim framework with Lazy.nvim
 
 ### Terminal & Prompt
 - `.wolfius.omp.json` - Oh-my-posh prompt theme
