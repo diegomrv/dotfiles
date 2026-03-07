@@ -102,6 +102,19 @@ else
 fi
 
 # =============================================================================
+# Claude Code
+# =============================================================================
+echo ""
+echo "=== Claude Code ==="
+
+if ! command_exists claude; then
+  echo "Installing Claude Code..."
+  curl -fsSL https://claude.ai/install.sh | bash
+else
+  echo "Claude Code already installed"
+fi
+
+# =============================================================================
 # Done
 # =============================================================================
 echo ""

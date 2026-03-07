@@ -26,6 +26,7 @@ PACKAGES=(
   neovim
   fastfetch
   ffmpeg
+  worktrunk
 )
 
 for pkg in "${PACKAGES[@]}"; do
@@ -48,19 +49,9 @@ echo ""
 echo "=== Applying dotfiles with Stow ==="
 
 if command -v stow &>/dev/null; then
-<<<<<<< Updated upstream
   stow --adopt .
   stow --adopt claude-global
   echo "Symlinks created"
-=======
-  if stow .; then
-    echo "Symlinks created"
-  else
-    echo "Error: Stow found conflicting files in \$HOME."
-    echo "Remove or back up the conflicting files listed above, then re-run this script."
-    exit 1
-  fi
->>>>>>> Stashed changes
 else
   echo "Warning: stow not found, skipping dotfiles linking"
 fi
