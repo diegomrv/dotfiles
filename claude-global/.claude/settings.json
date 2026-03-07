@@ -22,7 +22,7 @@
     "claude-code-setup@claude-plugins-official": true
   },
   "extraKnownMarketplaces": {},
-  "autoUpdatesChannel": "stable",
+  "autoUpdatesChannel": "latest",
   "feedbackSurveyState": {
     "lastShownTime": 1754321351818
   }
