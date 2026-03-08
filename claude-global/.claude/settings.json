@@ -1,4 +1,19 @@
 {
+  "permissions": {
+    "allow": [
+      "Bash(git checkout:*)",
+      "Bash(compaudit:*)",
+      "Bash(zsh:*)",
+      "Bash(nvim:*)"
+    ],
+    "deny": [
+      "Skill(superpowers:requesting-code-review)",
+      "Skill(superpowers:receiving-code-review)",
+      "Skill(superpowers:using-git-worktrees)",
+      "Skill(superpowers:writing-skills)"
+    ],
+    "defaultMode": "plan"
+  },
   "statusLine": {
     "type": "command",
     "command": "npx -y ccstatusline@latest",
@@ -18,10 +33,17 @@
     "figma@claude-plugins-official": true,
     "pr-review-toolkit@claude-plugins-official": true,
     "php-lsp@claude-plugins-official": true,
-    "laravel-boost@claude-plugins-official": true,
-    "claude-code-setup@claude-plugins-official": true
+    "claude-code-setup@claude-plugins-official": true,
+    "impeccable@impeccable": true
   },
-  "extraKnownMarketplaces": {},
+  "extraKnownMarketplaces": {
+    "impeccable": {
+      "source": {
+        "source": "github",
+        "repo": "pbakaus/impeccable"
+      }
+    }
+  },
   "autoUpdatesChannel": "latest",
   "feedbackSurveyState": {
     "lastShownTime": 1754321351818
