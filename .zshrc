@@ -84,3 +84,5 @@ export HERD_PHP_84_INI_SCAN_DIR="/Users/drodriguez/Library/Application Support/H
 
 # Herd injected PHP 8.2 configuration.
 export HERD_PHP_82_INI_SCAN_DIR="/Users/drodriguez/Library/Application Support/Herd/config/php/82/"
+
+if command -v wt >/dev/null 2>&1; then eval "$(command wt config shell init zsh)"; fi
