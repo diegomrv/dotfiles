@@ -8,3 +8,5 @@ email = diego@strangepixels.co
 	rebase = true
 [init]
 	defaultBranch = main
+[include]
+	path = ~/.gitconfig.local
