@@ -15,6 +15,8 @@ fi
 
 export EDITOR='nvim'
 export LEDGER_FILE="$HOME/finance/.hledger.journal"
+export SUDO_EDITOR='nvim'
+export VISUAL='nvim'
 
 # Initialize zsh completion system with additional completions
 if command -v brew >/dev/null 2>&1; then

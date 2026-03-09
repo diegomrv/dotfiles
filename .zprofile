@@ -1,2 +1,4 @@
-# Homebrew configuration
-eval "$(/opt/homebrew/bin/brew shellenv)"
+# Homebrew configuration (macOS only)
+if [[ -f /opt/homebrew/bin/brew ]]; then
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
