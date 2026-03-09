@@ -1,8 +1,8 @@
 ## Instructions
 
-`git clone` into `~/dotfiles`
+`git clone` anywhere (e.g. `~/dotfiles`, `~/projects/dotfiles`)
 
-`cd dotfiles`
+`cd` into the cloned directory
 
 `chmod +x setup.sh`
 

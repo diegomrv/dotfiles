@@ -16,10 +16,10 @@ Personal dotfiles repository using **GNU Stow** for symlink-based deployment. Su
 ./install.sh
 
 # Apply dotfiles manually (creates symlinks to $HOME)
-stow --adopt .
+stow --adopt -t "$HOME" .
 
 # Preview what stow would do without making changes
-stow -n -v .
+stow -n -v -t "$HOME" .
 ```
 
 ## Architecture
@@ -27,7 +27,7 @@ stow -n -v .
 ### Stow Deployment
 - Root-level files/directories are symlinked to `$HOME`
 - `.stow-local-ignore` defines exclusions (scripts, docs, IDE files)
-- Run stow from `~/dotfiles` directory
+- The `-t "$HOME"` flag allows the repo to live anywhere, not just `~/dotfiles`
 
 ### Shell Configuration
 - `.zshrc` - Main config, detects OS and sources appropriate file
