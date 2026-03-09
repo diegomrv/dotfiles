@@ -10,37 +10,13 @@ if ! command -v brew &>/dev/null; then
 fi
 
 # =============================================================================
-# Brew packages
+# Brew packages (via Brewfile)
 # =============================================================================
 echo ""
-echo "=== Installing Homebrew packages ==="
+echo "=== Installing Homebrew packages from Brewfile ==="
 
-PACKAGES=(
-  git
-  oh-my-posh
-  zsh-autosuggestions
-  zsh-syntax-highlighting
-  zsh-completions
-  eza
-  zoxide
-  neovim
-  fastfetch
-  ffmpeg
-  worktrunk
-)
-
-for pkg in "${PACKAGES[@]}"; do
-  if brew list "$pkg" &>/dev/null; then
-    echo "$pkg already installed"
-  else
-    echo "Installing $pkg..."
-    brew install "$pkg"
-  fi
-done
-
-# GUI apps referenced in shell config (install manually or uncomment)
-# brew install --cask herd         # also manages PHP and Composer
-# brew install --cask phpstorm
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+brew bundle --file="$SCRIPT_DIR/Brewfile"
 
 # =============================================================================
 # Stow dotfiles

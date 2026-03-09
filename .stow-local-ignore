@@ -7,6 +7,7 @@ install.sh
 CLAUDE.md
 \.claude
 claude-global
+Brewfile
 
 # Default GNU Stow ignore file. Recreating it here because Stow ignores it when
 # creating our own .stow-local-ignore file.

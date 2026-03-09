@@ -51,3 +51,5 @@ sudo() {
 
 # Make sudoedit use neovim (preserves SUDO_EDITOR from env)
 alias sudoedit='sudo SUDO_EDITOR="$(command -v nvim)" -e'
+
+alias brewsave='brew bundle dump --file=/Users/drodriguez/mainframe/dotfiles/Brewfile --force'
