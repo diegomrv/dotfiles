@@ -34,7 +34,8 @@
     "pr-review-toolkit@claude-plugins-official": true,
     "php-lsp@claude-plugins-official": true,
     "claude-code-setup@claude-plugins-official": true,
-    "impeccable@impeccable": true
+    "impeccable@impeccable": true,
+    "skill-creator@claude-plugins-official": true
   },
   "extraKnownMarketplaces": {
     "impeccable": {
@@ -44,13 +45,13 @@
       }
     }
   },
+  "autoUpdatesChannel": "latest",
   "mcpServers": {
     "figma-desktop": {
       "type": "http",
       "url": "http://127.0.0.1:3845/mcp"
     }
   },
-  "autoUpdatesChannel": "latest",
   "feedbackSurveyState": {
     "lastShownTime": 1754321351818
   }

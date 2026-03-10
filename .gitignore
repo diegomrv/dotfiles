@@ -8,6 +8,7 @@
 .config/jgit/
 .config/valet/
 .config/configstore/
+.config/soloterm/
 .config/psysh/psysh_history
 .config/zed/prompts/
 
