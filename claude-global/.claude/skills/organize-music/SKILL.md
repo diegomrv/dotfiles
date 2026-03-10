@@ -7,6 +7,10 @@ description: Organize newly downloaded music albums from Nicotine+/Soulseek into
 
 Organize newly downloaded albums from Nicotine+ (Soulseek) into the user's music library on kraken.
 
+## Prerequisites
+
+This skill only works on **kraken** (the homelab server). Before doing anything, check the hostname (`hostname`). If not on kraken, inform the user and stop.
+
 ## Paths
 
 - **Music library:** `/mnt/media/music/`
