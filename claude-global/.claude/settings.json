@@ -4,7 +4,8 @@
       "Bash(git checkout:*)",
       "Bash(compaudit:*)",
       "Bash(zsh:*)",
-      "Bash(nvim:*)"
+      "Bash(nvim:*)",
+      "Bash(bash /Users/drodriguez/mainframe/.claude/skills/git-sync-check/git-sync-check.sh*)"
     ],
     "deny": [
       "Skill(superpowers:requesting-code-review)",
@@ -27,7 +28,6 @@
     "feature-dev@claude-plugins-official": true,
     "code-simplifier@claude-plugins-official": true,
     "typescript-lsp@claude-plugins-official": true,
-    "commit-commands@claude-plugins-official": true,
     "security-guidance@claude-plugins-official": true,
     "claude-md-management@claude-plugins-official": true,
     "figma@claude-plugins-official": true,
@@ -45,13 +45,9 @@
       }
     }
   },
+  "effortLevel": "medium",
   "autoUpdatesChannel": "latest",
-  "mcpServers": {
-    "figma-desktop": {
-      "type": "http",
-      "url": "http://127.0.0.1:3845/mcp"
-    }
-  },
+  "voiceEnabled": true,
   "feedbackSurveyState": {
     "lastShownTime": 1754321351818
   }
