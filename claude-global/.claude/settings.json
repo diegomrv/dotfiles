@@ -45,7 +45,7 @@
       }
     }
   },
-  "effortLevel": "medium",
+  "effortLevel": "high",
   "autoUpdatesChannel": "latest",
   "voiceEnabled": true,
   "feedbackSurveyState": {
