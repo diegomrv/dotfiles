@@ -20,6 +20,14 @@ unleashragnarok() {
   fi
 }
 
+megaflare() {
+  if ping -c 1 -W 1 10.0.0.10 &>/dev/null; then
+    ssh drodriguez@10.0.0.10 "$@"
+  else
+    ssh drodriguez@bahamut "$@"
+  fi
+}
+
 alias vi="nvim"
 
 alias ls="eza --icons --group-directories-first"
