@@ -73,6 +73,11 @@ load-nvmrc() {
 add-zsh-hook chpwd load-nvmrc
 load-nvmrc
 
+# Unlock keychain for SSH sessions (needed for Claude Code auth, etc.)
+if [[ -n "$SSH_CONNECTION" ]] && ! security show-keychain-info login.keychain 2>/dev/null; then
+  security unlock-keychain login.keychain
+fi
+
 # Source machine-local config (for Herd, etc.)
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
 
