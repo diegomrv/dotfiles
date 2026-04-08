@@ -61,3 +61,4 @@ sudo() {
 alias sudoedit='sudo SUDO_EDITOR="$(command -v nvim)" -e'
 
 alias brewsave='brew bundle dump --file=/Users/drodriguez/mainframe/dotfiles/Brewfile --force'
+alias brewinstall='brew bundle --file=/Users/drodriguez/mainframe/dotfiles/Brewfile'
