@@ -44,9 +44,10 @@
       }
     }
   },
-  "effortLevel": "high",
+  "effortLevel": "medium",
   "autoUpdatesChannel": "latest",
   "voiceEnabled": true,
+  "showClearContextOnPlanAccept": true,
   "feedbackSurveyState": {
     "lastShownTime": 1754321351818
   }
