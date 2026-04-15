@@ -9,7 +9,7 @@
 .config/valet/
 .config/configstore/
 .config/soloterm/
-.config/psysh/psysh_history
+.config/psysh/
 .config/zed/prompts/
 
 # Runtime files
