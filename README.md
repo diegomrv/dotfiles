@@ -60,7 +60,7 @@ That's it. Restart your terminal.
 - NVM, pnpm, Claude Code
 
 **`install.sh`** does the rest:
-- Runs `brew bundle` from the Brewfile (CLI tools, casks, Mac App Store apps)
+- Runs `brew bundle` from the Brewfile (CLI tools and casks)
 - Runs `stow` to symlink everything to `$HOME`
 
 ### Manual steps after install
@@ -71,7 +71,7 @@ That's it. Restart your terminal.
 
 ## Brewfile
 
-All Homebrew packages, casks, and Mac App Store apps are tracked in the `Brewfile`. To update it after installing something new:
+All Homebrew packages and casks are tracked in the `Brewfile`. To update it after installing something new:
 
 ```bash
 brewsave  # alias for: brew bundle dump --file=<path>/Brewfile --force
