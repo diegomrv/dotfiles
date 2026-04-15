@@ -41,13 +41,14 @@
       "source": {
         "source": "github",
         "repo": "pbakaus/impeccable"
-      }
+      },
+      "autoUpdate": true
     }
   },
   "effortLevel": "medium",
+  "showClearContextOnPlanAccept": true,
   "autoUpdatesChannel": "latest",
   "voiceEnabled": true,
-  "showClearContextOnPlanAccept": true,
   "feedbackSurveyState": {
     "lastShownTime": 1754321351818
   }
