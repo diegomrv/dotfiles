@@ -51,5 +51,6 @@
   "voiceEnabled": true,
   "feedbackSurveyState": {
     "lastShownTime": 1754321351818
-  }
+  },
+  "model": "claude-opus-4-6[1M]"
 }
