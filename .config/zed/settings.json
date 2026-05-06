@@ -11,10 +11,10 @@
     "dock": "left"
   },
   "outline_panel": {
-    "dock": "right"
+    "dock": "left"
   },
   "collaboration_panel": {
-    "dock": "right"
+    "dock": "left"
   },
   "agent": {
     "sidebar_side": "right",
