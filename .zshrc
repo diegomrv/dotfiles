@@ -78,8 +78,13 @@ if [[ -n "$SSH_CONNECTION" ]] && ! security show-keychain-info login.keychain 2>
   security unlock-keychain login.keychain
 fi
 
-# Source machine-local config (for Herd, etc.)
+# Source machine-local secrets/config (gitignored -- API keys, Herd paths, etc.)
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
+
+# Source per-machine tracked config, auto-selected by hostname
+host_conf="$HOME/.zsh/hosts/$(scutil --get LocalHostName 2>/dev/null || hostname -s).zsh"
+[[ -f "$host_conf" ]] && source "$host_conf"
+unset host_conf
 
 # Yazi: cd to browsed directory on exit
 function y() {

@@ -33,7 +33,8 @@ stow -n -v -t "$HOME" .
 - `.zshrc` - Main config, detects OS and sources appropriate file
 - `.zsh/macos.zsh` - macOS-specific (Homebrew paths, Herd PHP)
 - `.zsh/ubuntu.zsh` - Linux/WSL-specific (LinuxBrew, Wayland)
-- `.zshrc.local` - Machine-specific overrides (gitignored)
+- `.zsh/hosts/<hostname>.zsh` - Per-machine config, **tracked in git**, auto-sourced by `.zshrc` based on hostname (e.g. `bahamut` = Mac mini, `highwind` = MacBook). NON-SECRET config only.
+- `.zshrc.local` - Machine-specific **secrets** + overrides (gitignored -- API keys, Herd paths)
 - `.aliases` - Custom shell aliases
 
 ### Editor Configuration

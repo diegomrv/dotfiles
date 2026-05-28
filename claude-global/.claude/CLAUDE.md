@@ -16,3 +16,6 @@ Diego's operational repo lives at `~/mainframe/`. If you're working in a project
 - **Skills:** `~/mainframe/.claude/skills/` -- reusable workflows (git-sync-check, sure-import, etc.)
 
 When making significant decisions in any project, log them to the mainframe decision log so context carries across repos.
+# graphify
+- **graphify** (`~/.claude/skills/graphify/SKILL.md`) - any input to knowledge graph. Trigger: `/graphify`
+When the user types `/graphify`, invoke the Skill tool with `skill: "graphify"` before doing anything else.
