@@ -21,3 +21,15 @@ When making significant decisions in any project, log them to the mainframe deci
 # graphify
 - **graphify** (`~/.claude/skills/graphify/SKILL.md`) - any input to knowledge graph. Trigger: `/graphify`
 When the user types `/graphify`, invoke the Skill tool with `skill: "graphify"` before doing anything else.
+
+# GitHub Workflow
+When the user asks to create GitHub issues, file the issues directly -- do NOT pivot into planning or implementing the fixes unless explicitly asked.
+
+# Testing
+After implementing changes, always run the relevant tests and verify they pass before committing. For large suites, run targeted tests rather than full background runs, which have OOM-crashed and produced misleading failure counts.
+
+# Shell / Bash Conventions
+When generating shell commands that include dollar signs, special characters, or status-report fields, escape them carefully or use heredocs/quoting to avoid shell mangling.
+
+# Infrastructure & Environment Notes
+SSH to dev servers may intermittently fail on port 22; SSH-over-443 is a verified working fallback.
