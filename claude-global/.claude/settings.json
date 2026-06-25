@@ -53,5 +53,6 @@
   "feedbackSurveyState": {
     "lastShownTime": 1754321351818
   },
-  "agentPushNotifEnabled": true
+  "agentPushNotifEnabled": true,
+  "tui": "fullscreen"
 }
