@@ -8,8 +8,10 @@ The following skills are blocked via deny rules. Do not attempt to invoke them:
 - `superpowers:using-git-worktrees`
 - `superpowers:writing-skills`
 
-# Mainframe Hub
+# Mainframe Hub (macOS machines only)
 Diego's operational repo lives at `~/mainframe/`. If you're working in a project repo, mainframe is the connective tissue.
+
+**Does NOT apply on kraken (the homelab server):** `~/mainframe/` does not exist there, and `~/homelab-docs/` is self-contained — it keeps its own logs (MAINTENANCE-LOG.md). Skip mainframe logging entirely on kraken.
 
 - **Decision log:** `~/mainframe/decisions/log.md` -- append-only. Log meaningful decisions with format: `[YYYY-MM-DD] DECISION: ... | REASONING: ... | CONTEXT: ...`
 - **Project READMEs:** `~/mainframe/projects/<name>/README.md` -- status and context for active workstreams
