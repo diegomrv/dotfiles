@@ -4,6 +4,8 @@
 .uuid
 
 # Specific stuff
+.config/gcloud/
+.config/intelephense/
 .config/raycast/
 .config/jgit/
 .config/valet/

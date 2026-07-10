@@ -41,6 +41,7 @@ fi
 
 # Additional PATH entries
 export PATH="$HOME/.local/bin:$PATH"         # CodeRabbit CLI, pipx, etc.
+export PATH="/opt/homebrew/opt/mysql-client/bin:$PATH"  # keg-only mysql CLI (replaces removed mysql@8.0)
 # Source custom functions
 [[ -f "$HOME/.zsh/functions/video.zsh" ]] && source "$HOME/.zsh/functions/video.zsh"
 
@@ -108,3 +109,6 @@ export HERD_PHP_84_INI_SCAN_DIR="/Users/drodriguez/Library/Application Support/H
 export HERD_PHP_82_INI_SCAN_DIR="/Users/drodriguez/Library/Application Support/Herd/config/php/82/"
 
 if command -v wt >/dev/null 2>&1; then eval "$(command wt config shell init zsh)"; fi
+
+# Added by LM Studio CLI tool (lms)
+export PATH="$PATH:/Users/drodriguez/.lmstudio/bin"
