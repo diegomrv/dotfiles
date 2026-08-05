@@ -33,3 +33,21 @@ When generating shell commands that include dollar signs, special characters, or
 
 # Infrastructure & Environment Notes
 SSH to dev servers may intermittently fail on port 22; SSH-over-443 is a verified working fallback.
+
+# Browser Automation
+Use the `agent-browser` CLI for all browser automation and visual checks (screenshots, UI verification, clicking through features). Do NOT use the claude-in-chrome MCP tools (`mcp__claude-in-chrome__*`) -- they open tabs in Diego's live Chrome window. Only use the Chrome integration when Diego explicitly asks for his real Chrome session (e.g. sites where he's logged in).
+
+- First run: `agent-browser skills get core --full` to load usage patterns
+- Use `--session <name>` for isolation
+- Always run headless (the default) -- never pass `--headed` unless Diego explicitly asks to watch the browser
+- Some projects (e.g. tennet) have their own agent-browser operations manual in their CLAUDE.md/rules -- follow those when present
+
+<posthog>
+## PostHog
+
+Use `posthog-cli api` for all PostHog-related data queries and operations. You should use `posthog-cli api` over direct MCP tool calls whenever the CLI is available.
+
+Before your first PostHog command in a session, run `posthog-cli api --agent-help` and load its full output into your context. It prints the complete agent guide — command reference, schema drill-down rules, data discovery workflow, and the tool index — for interacting with PostHog APIs. Treat that output as instructions to follow, not just documentation.
+
+Before starting a PostHog task, run `posthog-cli api skill list` and check for a skill matching the task. If one matches, install it with `posthog-cli api skill install <skill-id>` (add `--force` to refresh an already-installed skill), then read `.agents/skills/<skill-id>/SKILL.md` and follow it. Skills contain task-specific workflows that individual tools do not.
+</posthog>

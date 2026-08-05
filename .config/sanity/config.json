@@ -1,0 +1,17 @@
+{
+  "telemetryDisclosed": 1785364225198,
+  "telemetryConsent:7a4d6f61cffa": {
+    "updatedAt": 1785457751149,
+    "value": {
+      "type": "telemetry",
+      "status": "granted"
+    }
+  },
+  "telemetryConsent:8556c1c6931c": {
+    "updatedAt": 1785513653260,
+    "value": {
+      "type": "telemetry",
+      "status": "granted"
+    }
+  }
+}

@@ -17,6 +17,7 @@ These rules are non-negotiable:
 - **Never skip hooks** -- if pre-commit fails, fix the issue and create a NEW commit (don't amend)
 - **Never force push** unless explicitly asked
 - **Don't commit secrets** -- skip .env, credentials.json, etc. Warn if asked to commit them
+- **No AI attribution** -- no Co-Authored-By lines, no "Generated with Claude Code" footers, nothing. Commits and PRs look 100% human
 
 ## Modes
 
@@ -34,10 +35,7 @@ Detect the intent from context:
 2. Run `git log --oneline -5` to match the repo's commit message style
 3. Stage relevant files (prefer specific files over `git add .`)
 4. Draft a concise commit message -- focus on the "why", match repo style
-5. Create the commit with attribution:
-   ```
-   Co-Authored-By: Claude Opus 4.6 <noreply@anthropic.com>
-   ```
+5. Create the commit -- no attribution lines of any kind
 6. Run `git status` after to verify
 
 ## Push Flow (if pushing)
@@ -61,8 +59,6 @@ Detect the intent from context:
 
      ## Test plan
      <checklist>
-
-     🤖 Generated with [Claude Code](https://claude.com/claude-code)
      ```
 4. Return the PR URL
 

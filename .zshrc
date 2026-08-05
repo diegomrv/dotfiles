@@ -15,6 +15,7 @@ fi
 
 export EDITOR='nvim'
 export LEDGER_FILE="$HOME/finance/.hledger.journal"
+export MOLE_ENABLE_DISK_VERIFY=1
 export SUDO_EDITOR='nvim'
 export VISUAL='nvim'
 
@@ -112,3 +113,11 @@ if command -v wt >/dev/null 2>&1; then eval "$(command wt config shell init zsh)
 
 # Added by LM Studio CLI tool (lms)
 export PATH="$PATH:/Users/drodriguez/.lmstudio/bin"
+
+# pnpm
+export PNPM_HOME="/Users/drodriguez/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME/bin:"*) ;;
+  *) export PATH="$PNPM_HOME/bin:$PATH" ;;
+esac
+# pnpm end
