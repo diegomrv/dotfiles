@@ -21,12 +21,19 @@ When making significant decisions in any project, log them to the mainframe deci
 # graphify
 - **graphify** (`~/.claude/skills/graphify/SKILL.md`) - any input to knowledge graph. Trigger: `/graphify`
 When the user types `/graphify`, invoke the Skill tool with `skill: "graphify"` before doing anything else.
+Only use graphify when the project already uses it (a `graphify-out/` folder exists in the repo) or when explicitly invoked via `/graphify`. Do not treat ordinary codebase/document questions as graphify queries otherwise.
 
 # GitHub Workflow
 When the user asks to create GitHub issues, file the issues directly -- do NOT pivot into planning or implementing the fixes unless explicitly asked.
 
 # Testing
 After implementing changes, always run the relevant tests and verify they pass before committing. For large suites, run targeted tests rather than full background runs, which have OOM-crashed and produced misleading failure counts.
+
+# Node Memory Limits (macOS machines, 16GB RAM)
+Uncapped node worker pools have exhausted swap and forced macOS to suspend apps (2026-08-17: a 9-worker test run used ~13GB). Rules:
+- ALWAYS cap workers on test/build runs: jest/vitest `--maxWorkers=2`, playwright `--workers=2`, or `VITEST_MAX_THREADS=2`.
+- Kill node processes you spawned (dev servers, watchers, workers) when done with them.
+- A PreToolUse hook (`~/.claude/hooks/node-memory-guard.sh`) injects a MEMORY GUARD warning when node RSS or swap gets tight, and blocks heavy runner commands when critical. If you see it: clean up stray node processes first, then re-run with capped workers.
 
 # Shell / Bash Conventions
 When generating shell commands that include dollar signs, special characters, or status-report fields, escape them carefully or use heredocs/quoting to avoid shell mangling.

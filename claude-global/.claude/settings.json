@@ -3,7 +3,6 @@
     "allow": [
       "Bash(git checkout:*)",
       "Bash(compaudit:*)",
-      "Bash(zsh:*)",
       "Bash(nvim:*)",
       "Bash(bash /Users/drodriguez/mainframe/.claude/skills/git-sync-check/git-sync-check.sh*)"
     ],
@@ -13,7 +12,7 @@
       "Skill(superpowers:using-git-worktrees)",
       "Skill(superpowers:writing-skills)"
     ],
-    "defaultMode": "plan"
+    "defaultMode": "auto"
   },
   "model": "claude-fable-5[1m]",
   "statusLine": {
@@ -46,6 +45,57 @@
   "switchModelsOnFlag": false,
   "agentPushNotifEnabled": true,
   "skipAutoPermissionPrompt": true,
+  "autoMode": {
+    "allow": [
+      "$defaults",
+      "Bash(agent-browser:*) in /Users/drodriguez/projects/misc/1800-happybirthday-web"
+    ],
+    "soft_deny": [
+      "$defaults",
+      "Bash(*claude-in-chrome*) — CLAUDE.md restricts use to explicit request for Diego's live Chrome session"
+    ],
+    "environment": [
+      "### Org-wide",
+      "**Organization**: None configured",
+      "**Cloud provider(s)**: None configured",
+      "**Repository visibility**: Private (thestrangepixels/1800-happybirthday-web, confirmed via gh)",
+      "**Internal sharing / snippet hosting**: None configured — treat public paste/gist services as outside the trust boundary",
+      "**Secrets management**: None configured",
+      "**Default / protected branches**: develop (default), main — both protected via ruleset `PRs` (active); develop and main also listed as protected branches",
+      "**CI/CD deploy targets**: DigitalOcean App Platform, auto-deploys on push to `main` (fronted by DO-managed Cloudflare edge, not an org-owned Cloudflare account)",
+      "**Network posture**: None configured",
+      "**Source control**: github.com:thestrangepixels/1800-happybirthday-web.git (origin) — this repo and its remote only",
+      "**Trusted internal domains**: cms.1800happybirthday.com, 1800happybirthday.com (WordPress CMS host and production site for this project, per CLAUDE.md and usage)",
+      "**Trusted cloud buckets**: None configured",
+      "**Key internal services**: WordPress CMS GraphQL endpoint at CMS_GRAPQL_ENDPOINT (per .env.example: https://1800-happybirthday-cms.test/graphql in dev; cms.1800happybirthday.com in usage)",
+      "**Internal package registry**: None configured",
+      "**Sensitive data locations & audiences**: `.env`, `.env.local` (CMS basic-auth credentials, webhook secret, preview secret) — not for sharing outside this project's maintainers",
+      "**Data retention / declassification**: None configured",
+      "**Sensitive remote targets**: any namespace/host/container with `prod` or `production` as a whole word/segment; note prod for this project is the `main` branch deploy on DigitalOcean App Platform fronted by DO-managed Cloudflare",
+      "**Protected deployment namespaces / environments**: None configured — fall back to the Sensitive remote targets heuristic (treat `main`-branch DO App Platform deploy as the production target)",
+      "**Protected IaC scopes**: IAM, RBAC, networking, quota, and node-pool resources; anything whose name or tag carries `prod` or `production` as a whole word or name segment",
+      "### User-specific",
+      "**Primary use of Claude Code**: software development (Next.js/WordPress headless site work)",
+      "**Trusted repo**: /Users/drodriguez/projects/misc/1800-happybirthday-web and its remote github.com:thestrangepixels/1800-happybirthday-web.git (private) — confidential material (e.g. CMS credentials) is fine to keep local/committed here per repo convention, but secrets/personal data are never cleared into it by visibility alone",
+      "**Org-specific CLIs**: agent-browser (required for all browser automation/visual checks per CLAUDE.md; do not use claude-in-chrome MCP tools unless Diego explicitly asks for his real Chrome session)",
+      "routine under /Users/drodriguez/projects/misc/1800-happybirthday-web/ prefix"
+    ]
+  },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/bin/bash /Users/drodriguez/.claude/hooks/node-memory-guard.sh",
+            "timeout": 10,
+            "statusMessage": "Checking node memory"
+          }
+        ]
+      }
+    ]
+  },
   "voiceEnabled": true,
   "feedbackSurveyState": {
     "lastShownTime": 1754321351818
