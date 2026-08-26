@@ -25,6 +25,22 @@ if command -v brew >/dev/null 2>&1; then
 fi
 autoload -Uz compinit && compinit
 
+# gcloud/gsutil/bq tab completion (brew cask gcloud-cli). Must come after compinit,
+# which is why it lives here and not in .zsh/macos.zsh.
+[ -f /opt/homebrew/share/google-cloud-sdk/completion.zsh.inc ] && source /opt/homebrew/share/google-cloud-sdk/completion.zsh.inc
+
+# fzf: Ctrl+R fuzzy history, Ctrl+T fuzzy file picker, Alt+C fuzzy cd, **<Tab> completion.
+# Uses fd for file/dir listing (respects .gitignore, includes dotfiles, skips .git).
+if command -v fzf >/dev/null 2>&1; then
+  source <(fzf --zsh)
+  if command -v fd >/dev/null 2>&1; then
+    export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
+    export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+    export FZF_ALT_C_COMMAND='fd --type d --hidden --follow --exclude .git'
+  fi
+  export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
+fi
+
 source ~/.aliases
 
 if command -v brew >/dev/null 2>&1; then
