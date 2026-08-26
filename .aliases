@@ -20,11 +20,13 @@ unleashragnarok() {
   fi
 }
 
+# Always go through the "bahamut" ssh config host so ControlMaster sockets are shared
+# (LAN IP override when reachable, Tailscale name otherwise)
 megaflare() {
   if ping -c 1 -W 1 10.0.0.10 &>/dev/null; then
-    ssh drodriguez@10.0.0.10 "$@"
+    ssh -o HostName=10.0.0.10 bahamut "$@"
   else
-    ssh drodriguez@bahamut "$@"
+    ssh bahamut "$@"
   fi
 }
 
