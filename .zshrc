@@ -33,6 +33,9 @@ autoload -Uz compinit && compinit
 # Uses fd for file/dir listing (respects .gitignore, includes dotfiles, skips .git).
 if command -v fzf >/dev/null 2>&1; then
   source <(fzf --zsh)
+  # Alt+C is unreachable on macOS with the Latin American layout (Option is needed for @ [] {} \),
+  # so also bind fuzzy-cd to Ctrl+G. Esc then C works too.
+  bindkey '^G' fzf-cd-widget
   if command -v fd >/dev/null 2>&1; then
     export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
     export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
