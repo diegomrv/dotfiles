@@ -39,7 +39,7 @@ Uncapped node worker pools have exhausted swap and forced macOS to suspend apps 
 When generating shell commands that include dollar signs, special characters, or status-report fields, escape them carefully or use heredocs/quoting to avoid shell mangling.
 
 # Infrastructure & Environment Notes
-SSH to dev servers may intermittently fail on port 22; SSH-over-443 is a verified working fallback.
+Port-22 timeouts from home were the UniFi gateway IPS (signature "ET SCAN Potential SSH Scan OUTBOUND": 5+ SSH connections in 120s from one host got blocked). Suppressed on 2026-09-04; see `~/mainframe/references/home-network.md`. If SSH bursts start timing out again while port 443 works, check that suppression first, not the ISP. SSH-over-443 remains a valid fallback for servers that offer it.
 
 # Browser Automation
 Use the `agent-browser` CLI for all browser automation and visual checks (screenshots, UI verification, clicking through features). Do NOT use the claude-in-chrome MCP tools (`mcp__claude-in-chrome__*`) -- they open tabs in Diego's live Chrome window. Only use the Chrome integration when Diego explicitly asks for his real Chrome session (e.g. sites where he's logged in).

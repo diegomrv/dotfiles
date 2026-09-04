@@ -54,6 +54,7 @@
     }
   },
   "effortLevel": "xhigh",
+  "awaySummaryEnabled": false,
   "showClearContextOnPlanAccept": true,
   "autoUpdatesChannel": "latest",
   "tui": "fullscreen",
@@ -99,5 +100,6 @@
   "voiceEnabled": true,
   "feedbackSurveyState": {
     "lastShownTime": 1754321351818
-  }
+  },
+  "enableArtifact": false
 }
