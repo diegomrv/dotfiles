@@ -30,6 +30,7 @@
       }
     ]
   },
+  "enableArtifact": false,
   "statusLine": {
     "type": "command",
     "command": "npx -y ccstatusline@latest",
@@ -58,6 +59,7 @@
   "showClearContextOnPlanAccept": true,
   "autoUpdatesChannel": "latest",
   "tui": "fullscreen",
+  "theme": "light-ansi",
   "switchModelsOnFlag": false,
   "agentPushNotifEnabled": true,
   "skipAutoPermissionPrompt": true,
@@ -100,6 +102,5 @@
   "voiceEnabled": true,
   "feedbackSurveyState": {
     "lastShownTime": 1754321351818
-  },
-  "enableArtifact": false
+  }
 }
