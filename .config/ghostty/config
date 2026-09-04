@@ -1,7 +1,11 @@
 shell-integration-features = ssh-terminfo,no-cursor
 keybind = shift+enter=text:\x1b\r
 #theme = Catppuccin Frappe
+# Fallback theme. Overridden by the auto theme file below when it exists.
 theme = Hopscotch.256
+# Written by `ghostty +list-themes` when you press `w` on a theme.
+# Pick a theme there, press w, then cmd+shift+, in Ghostty to reload.
+config-file = ?~/Library/Application Support/com.mitchellh.ghostty/auto/theme.ghostty
 background-opacity = 0.95
 background-blur-radius = 40
 window-height = 90
