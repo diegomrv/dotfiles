@@ -14,7 +14,22 @@
     ],
     "defaultMode": "auto"
   },
-  "model": "claude-fable-5[1m]",
+  "model": "claude-fable-5-1[1m]",
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/bin/bash /Users/drodriguez/.claude/hooks/node-memory-guard.sh",
+            "timeout": 10,
+            "statusMessage": "Checking node memory"
+          }
+        ]
+      }
+    ]
+  },
   "statusLine": {
     "type": "command",
     "command": "npx -y ccstatusline@latest",
@@ -79,21 +94,6 @@
       "**Trusted repo**: /Users/drodriguez/projects/misc/1800-happybirthday-web and its remote github.com:thestrangepixels/1800-happybirthday-web.git (private) — confidential material (e.g. CMS credentials) is fine to keep local/committed here per repo convention, but secrets/personal data are never cleared into it by visibility alone",
       "**Org-specific CLIs**: agent-browser (required for all browser automation/visual checks per CLAUDE.md; do not use claude-in-chrome MCP tools unless Diego explicitly asks for his real Chrome session)",
       "routine under /Users/drodriguez/projects/misc/1800-happybirthday-web/ prefix"
-    ]
-  },
-  "hooks": {
-    "PreToolUse": [
-      {
-        "matcher": "Bash",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "/bin/bash /Users/drodriguez/.claude/hooks/node-memory-guard.sh",
-            "timeout": 10,
-            "statusMessage": "Checking node memory"
-          }
-        ]
-      }
     ]
   },
   "voiceEnabled": true,

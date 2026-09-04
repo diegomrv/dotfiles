@@ -34,3 +34,8 @@ Thumbs.db
 
 # Project-level Claude settings (not global)
 .claude/settings.local.json
+
+# CLI caches / runtime state
+.config/gws/cache/
+.config/herdr/*
+!.config/herdr/config.toml
