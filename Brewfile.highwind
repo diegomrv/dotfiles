@@ -1,0 +1,189 @@
+tap "ampcode/tap"
+tap "jandedobbeleer/oh-my-posh"
+tap "run-llama/liteparse"
+tap "shopify/shopify"
+tap "smudge/smudge"
+tap "steipete/tap", trusted: { casks: ["codexbar"] }
+tap "typewhisper/tap"
+tap "westpoint-io/dustoff"
+tap "xykong/tap", trusted: true
+# Browser automation CLI for AI agents
+brew "agent-browser"
+# Codec library for encoding and decoding AV1 video streams
+brew "aom"
+# Powerful, enterprise-ready, open source web server with automatic HTTPS
+brew "caddy"
+# Library for manipulating PNG images
+brew "libpng"
+# Software library to render fonts
+brew "freetype"
+# XML-based font configuration API for X Windows
+brew "fontconfig"
+# Core application library for C
+brew "glib"
+# Cloudflare Tunnel client (formerly Argo Tunnel)
+brew "cloudflared"
+# C library implementing the SSH2 protocol
+brew "libssh2"
+# Command-line tool for DigitalOcean
+brew "doctl"
+# More intuitive version of du in rust
+brew "dust"
+# C library of Git core methods that is re-entrant and linkable
+brew "libgit2"
+# Modern, maintained replacement for ls
+brew "eza"
+# Like neofetch, but much faster because written mostly in C
+brew "fastfetch"
+# Simple, fast and user-friendly alternative to find
+brew "fd"
+# Play, record, convert, and stream select audio and video codecs
+brew "ffmpeg"
+# Libraries to talk to Microsoft SQL Server and Sybase databases
+brew "freetds"
+# Command-line fuzzy finder written in Go
+brew "fzf"
+# TIFF library and utilities
+brew "libtiff"
+# New file format for still image compression
+brew "jpeg-xl"
+# Graphics library to dynamically manipulate images
+brew "gd"
+# GitHub command-line tool
+brew "gh"
+# GIF image/animation creator/editor
+brew "gifsicle"
+# Distributed revision control system
+brew "git"
+# Render markdown on the CLI
+brew "glow"
+# Library to load and enumerate PKCS#11 modules
+brew "p11-kit"
+# GNU Transport Layer Security (TLS) Library
+brew "gnutls"
+# CLI for Drive, Gmail, Calendar, Sheets, Docs, Chat, Admin, and more
+brew "googleworkspace-cli"
+# OpenType text shaping engine
+brew "harfbuzz"
+# Simple terminal UI for git commands
+brew "lazygit"
+# Library for JPEG-2000 image manipulation
+brew "openjpeg"
+# Image processing and image analysis library
+brew "leptonica"
+# Find what models run on your hardware
+brew "llmfit"
+# Deep clean and optimize your Mac
+brew "mole"
+# Ambitious Vim-fork focused on extensibility and agility
+brew "neovim"
+# HTTP(S) server and reverse proxy, and IMAP/POP3 proxy server
+brew "nginx"
+# General-purpose scripting language
+brew "php", restart_service: :changed
+# General-purpose scripting language
+brew "php@8.4"
+# CLI for Playwright: record/generate code, inspect selectors, take screenshots
+brew "playwright-cli"
+# PDF rendering library (based on the xpdf-3.0 code base)
+brew "poppler"
+# Rsync for cloud storage
+brew "rclone"
+# Persistent key-value database, with built-in net interface
+brew "redis", restart_service: :changed
+# Search tool like grep and The Silver Searcher
+brew "ripgrep"
+# Safe, concurrent, practical language
+brew "rust"
+# Command-line tool for the Amazon S3 service
+brew "s3cmd"
+# Organize software neatly under a single directory tree (e.g. /usr/local)
+brew "stow"
+# OCR (Optical Character Recognition) engine
+brew "tesseract"
+# Extremely fast Python package installer and resolver, written in Rust
+brew "uv"
+# Command-line interface for WordPress
+brew "wp-cli"
+# Blazing fast terminal file manager written in Rust, based on async I/O
+brew "yazi"
+# Shell extension to navigate your filesystem faster
+brew "zoxide"
+# Fish-like fast/unobtrusive autosuggestions for zsh
+brew "zsh-autosuggestions"
+# Additional completion definitions for zsh
+brew "zsh-completions"
+# Fish shell like syntax highlighting for zsh
+brew "zsh-syntax-highlighting"
+# CLI for Amp, the frontier coding agent
+brew "ampcode/tap/ampcode", trusted: true
+# Prompt theme engine for any shell
+brew "jandedobbeleer/oh-my-posh/oh-my-posh", trusted: true
+# Open-source PDF parsing with spatial text extraction and OCR processing
+brew "run-llama/liteparse/llamaindex-liteparse", trusted: true
+# A CLI tool to build for the Shopify platform
+brew "shopify/shopify/shopify-cli", trusted: true
+# A CLI for configuring 'Night Shift' on macOS 🌕🌖🌗🌘🌑
+brew "smudge/smudge/nightlight", trusted: true
+# Find and remove JS/TS build artifacts wasting disk space
+brew "westpoint-io/dustoff/dustoff", trusted: true
+# Command-line interface for 1Password
+cask "1password-cli"
+# Android SDK component
+cask "android-platform-tools"
+# Open source IDE for exploring and testing APIs
+cask "bruno"
+# OpenAI's coding agent that runs in your terminal
+cask "codex"
+# Menu bar usage monitor for Codex and Claude
+cask "codexbar"
+# Window peeking utility app
+cask "dockdoor"
+# Collaborative team software
+cask "figma"
+# Web browser
+cask "firefox"
+# Markdown previews in Finder QuickLook with diagrams and math
+cask "xykong/tap/flux-markdown", trusted: true
+cask "font-hack-nerd-font"
+cask "font-symbols-only-nerd-font"
+# Set of tools to manage resources and applications hosted on Google Cloud
+cask "gcloud-cli"
+# Terminal emulator that uses platform-native UI and GPU acceleration
+cask "ghostty"
+# Free and open-source media player
+cask "iina"
+# Menu bar manager
+cask "jordanbaird-ice"
+# Trims video and audio files losslessly
+cask "losslesscut"
+# Intercept, modify, replay, save HTTP/S traffic
+cask "mitmproxy"
+# Smooths scrolling and set mouse scroll directions independently
+cask "mos"
+# Reverse proxy, secure introspectable tunnels to localhost
+cask "ngrok"
+# Calculator and converter application
+cask "numi"
+# Open-source software for live streaming and screen recording
+cask "obs"
+# Knowledge base that works on top of a local folder of plain text Markdown files
+cask "obsidian"
+# Utility to uninstall apps and remove leftover files from old/uninstalled apps
+cask "pearcleaner"
+# PHP IDE by JetBrains
+cask "phpstorm"
+# Open source virtual/remote desktop application
+cask "rustdesk"
+# Native GUI tool for relational databases
+cask "tableplus"
+# Messaging app with a focus on speed and security
+cask "telegram"
+# To-do & task list manager
+cask "ticktick"
+# Speech-to-text and AI text processing
+cask "typewhisper/tap/typewhisper", trusted: true
+# Multiplayer code editor
+cask "zed"
+uv "graphifyy"
+npm "corepack"

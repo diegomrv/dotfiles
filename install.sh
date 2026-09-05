@@ -10,13 +10,20 @@ if ! command -v brew &>/dev/null; then
 fi
 
 # =============================================================================
-# Brew packages (via Brewfile)
+# Brew packages (via per-machine Brewfile.<hostname>)
 # =============================================================================
-echo ""
-echo "=== Installing Homebrew packages from Brewfile ==="
-
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-brew bundle --file="$SCRIPT_DIR/Brewfile"
+HOST_NAME="$(scutil --get LocalHostName 2>/dev/null || hostname -s)"
+BREWFILE="$SCRIPT_DIR/Brewfile.$HOST_NAME"
+
+echo ""
+if [ -f "$BREWFILE" ]; then
+  echo "=== Installing Homebrew packages from Brewfile.$HOST_NAME ==="
+  brew bundle --file="$BREWFILE"
+else
+  echo "=== No Brewfile.$HOST_NAME found, skipping Homebrew packages ==="
+  echo "    Available: $(ls "$SCRIPT_DIR"/Brewfile.* 2>/dev/null | xargs -n1 basename | tr '\n' ' ')"
+fi
 
 # =============================================================================
 # Stow dotfiles

@@ -62,5 +62,9 @@ sudo() {
 # Make sudoedit use neovim (preserves SUDO_EDITOR from env)
 alias sudoedit='sudo SUDO_EDITOR="$(command -v nvim)" -e'
 
-alias brewsave='brew bundle dump --file=/Users/drodriguez/mainframe/dotfiles/Brewfile --force'
-alias brewinstall='brew bundle --file=/Users/drodriguez/mainframe/dotfiles/Brewfile'
+# Homebrew: one Brewfile per machine (Brewfile.<hostname>) since the Macs deliberately differ.
+# Hostname resolution matches the per-host config lookup in .zshrc.
+alias brewsave='brew bundle dump --force --file="$HOME/mainframe/dotfiles/Brewfile.$(scutil --get LocalHostName 2>/dev/null || hostname -s)"'
+alias brewinstall='brew bundle --file="$HOME/mainframe/dotfiles/Brewfile.$(scutil --get LocalHostName 2>/dev/null || hostname -s)"'
+# What one machine has that the other doesn't (< bahamut, > highwind)
+alias brewdiff='echo "< bahamut   > highwind"; diff <(grep -v "^#" "$HOME/mainframe/dotfiles/Brewfile.bahamut" | sort) <(grep -v "^#" "$HOME/mainframe/dotfiles/Brewfile.highwind" | sort)'
