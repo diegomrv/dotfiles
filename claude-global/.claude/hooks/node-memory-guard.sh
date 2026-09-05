@@ -19,10 +19,16 @@ cmd=$(printf '%s' "$input" | /usr/bin/jq -r '.tool_input.command // ""' 2>/dev/n
 node_kb=$(/bin/ps axo rss=,comm= | /usr/bin/awk '{r=$1; $1=""; if ($0 ~ /(^| |\/)node$/) s+=r} END {print s+0}')
 node_kb=${node_kb:-0}
 
-# Free swap in MB (integer). "sysctl -n vm.swapusage" ->
+# Swap in MB (integers). "sysctl -n vm.swapusage" ->
 #   total = 5120.00M  used = 3774.75M  free = 1345.25M  (encrypted)
-swap_free_mb=$(/usr/sbin/sysctl -n vm.swapusage 2>/dev/null | /usr/bin/awk '{gsub(/M/,""); printf "%d", $9}')
+# macOS allocates swap on demand: total = 0 means no swap pressure at all, not
+# exhausted swap (this used to read "free = 0.00M" as critical and block commands).
+swap_usage=$(/usr/sbin/sysctl -n vm.swapusage 2>/dev/null)
+swap_total_mb=$(printf '%s' "$swap_usage" | /usr/bin/awk '{gsub(/M/,""); printf "%d", $3}')
+swap_free_mb=$(printf '%s' "$swap_usage" | /usr/bin/awk '{gsub(/M/,""); printf "%d", $9}')
+swap_total_mb=${swap_total_mb:-0}
 swap_free_mb=${swap_free_mb:-99999}
+[ "$swap_total_mb" -eq 0 ] && swap_free_mb=99999
 
 level=""
 if [ "$node_kb" -gt "$CRIT_NODE_KB" ] || [ "$swap_free_mb" -lt "$CRIT_SWAP_FREE_MB" ]; then
