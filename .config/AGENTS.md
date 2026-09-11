@@ -1,1 +1,1 @@
-/Users/drodriguez/.claude/CLAUDE.md
+../claude-global/.claude/CLAUDE.md

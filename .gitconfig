@@ -10,9 +10,11 @@ email = diego@strangepixels.co
 	defaultBranch = main
 [include]
 	path = ~/.gitconfig.local
+# Resolve gh from PATH -- it lives at /opt/homebrew/bin on the Macs and
+# /home/linuxbrew/.linuxbrew/bin on kraken.
 [credential "https://github.com"]
-	helper = 
-	helper = !/opt/homebrew/bin/gh auth git-credential
+	helper =
+	helper = !gh auth git-credential
 [credential "https://gist.github.com"]
-	helper = 
-	helper = !/opt/homebrew/bin/gh auth git-credential
+	helper =
+	helper = !gh auth git-credential

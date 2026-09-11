@@ -2,22 +2,19 @@
 set -euo pipefail
 
 # =============================================================================
-# Preflight check
-# =============================================================================
-if ! command -v brew &>/dev/null; then
-  echo "Error: Homebrew not found. Run ./setup.sh first."
-  exit 1
-fi
-
-# =============================================================================
 # Brew packages (via per-machine Brewfile.<hostname>)
+#
+# A missing Homebrew is not fatal: symlinking the dotfiles is the important part
+# and must still happen on a machine that manages packages some other way.
 # =============================================================================
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 HOST_NAME="$(scutil --get LocalHostName 2>/dev/null || hostname -s)"
 BREWFILE="$SCRIPT_DIR/Brewfile.$HOST_NAME"
 
 echo ""
-if [ -f "$BREWFILE" ]; then
+if ! command -v brew &>/dev/null; then
+  echo "=== Homebrew not found, skipping packages (run ./setup.sh to install it) ==="
+elif [ -f "$BREWFILE" ]; then
   echo "=== Installing Homebrew packages from Brewfile.$HOST_NAME ==="
   brew bundle --file="$BREWFILE"
 else

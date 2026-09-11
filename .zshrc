@@ -61,7 +61,6 @@ fi
 
 # Additional PATH entries
 export PATH="$HOME/.local/bin:$PATH"         # CodeRabbit CLI, pipx, etc.
-export PATH="/opt/homebrew/opt/mysql-client/bin:$PATH"  # keg-only mysql CLI (replaces removed mysql@8.0)
 # Source custom functions
 [[ -f "$HOME/.zsh/functions/video.zsh" ]] && source "$HOME/.zsh/functions/video.zsh"
 
@@ -94,11 +93,6 @@ load-nvmrc() {
 add-zsh-hook chpwd load-nvmrc
 load-nvmrc
 
-# Unlock keychain for SSH sessions (needed for Claude Code auth, etc.)
-if [[ -n "$SSH_CONNECTION" ]] && ! security show-keychain-info login.keychain 2>/dev/null; then
-  security unlock-keychain login.keychain
-fi
-
 # Source machine-local secrets/config (gitignored -- API keys, Herd paths, etc.)
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
 
@@ -117,26 +111,11 @@ function y() {
 	rm -f -- "$tmp"
 }
 
-fastfetch
-
-# Herd injected PHP binary.
-export PATH="/Users/drodriguez/Library/Application Support/Herd/bin/":$PATH
-
-# Herd injected PHP 8.4 configuration.
-export HERD_PHP_84_INI_SCAN_DIR="/Users/drodriguez/Library/Application Support/Herd/config/php/84/"
-
-# Herd injected PHP 8.2 configuration.
-export HERD_PHP_82_INI_SCAN_DIR="/Users/drodriguez/Library/Application Support/Herd/config/php/82/"
+command -v fastfetch >/dev/null 2>&1 && fastfetch
 
 if command -v wt >/dev/null 2>&1; then eval "$(command wt config shell init zsh)"; fi
 
-# Added by LM Studio CLI tool (lms)
-export PATH="$PATH:/Users/drodriguez/.lmstudio/bin"
-
-# pnpm
-export PNPM_HOME="/Users/drodriguez/Library/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME/bin:"*) ;;
-  *) export PATH="$PNPM_HOME/bin:$PATH" ;;
-esac
-# pnpm end
+# NOTE: installers (Herd, LM Studio, pnpm, ...) like to append their own blocks
+# down here with absolute /Users/<user>/... paths. Those leak onto Linux boxes
+# (kraken) and clobber the values set in .zsh/ubuntu.zsh. Move anything they add
+# into .zsh/macos.zsh instead, and keep it $HOME-relative.

@@ -22,7 +22,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "/bin/bash /Users/drodriguez/.claude/hooks/node-memory-guard.sh",
+            "command": "/bin/bash \"$HOME/.claude/hooks/node-memory-guard.sh\"",
             "timeout": 10,
             "statusMessage": "Checking node memory"
           }
@@ -35,7 +35,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "sh '/Users/drodriguez/skills/tldraw-offline/inject-server-context.sh' SubagentStart"
+            "command": "s=\"$HOME/skills/tldraw-offline/inject-server-context.sh\"; [ -f \"$s\" ] && sh \"$s\" SubagentStart || true"
           }
         ]
       }

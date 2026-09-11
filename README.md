@@ -60,7 +60,7 @@ That's it. Restart your terminal.
 - NVM, pnpm, Claude Code
 
 **`install.sh`** does the rest:
-- Runs `brew bundle` from the Brewfile (CLI tools and casks)
+- Runs `brew bundle` from this machine's `Brewfile.<hostname>`, if one exists
 - Runs `stow` to symlink everything to `$HOME`
 
 ### Manual steps after install
@@ -71,10 +71,13 @@ That's it. Restart your terminal.
 
 ## Brewfile
 
-All Homebrew packages and casks are tracked in the `Brewfile`. To update it after installing something new:
+Homebrew packages are tracked per machine in `Brewfile.<hostname>` (`bahamut`, `highwind`, `kraken`) -- the machines deliberately carry different packages. To update the current machine's file after installing something new:
 
 ```bash
-brewsave  # alias for: brew bundle dump --file=<path>/Brewfile --force
+brewsave            # dump this machine into its own Brewfile
+brewinstall         # install from this machine's Brewfile
+brewdiff            # what bahamut has that highwind doesn't
+brewdiff kraken bahamut   # ...or any other pair
 ```
 
 ## Adding new dotfiles
