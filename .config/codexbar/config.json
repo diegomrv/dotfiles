@@ -103,7 +103,7 @@
       "id" : "moonshot"
     },
     {
-      "enabled" : true,
+      "enabled" : false,
       "id" : "amp"
     },
     {

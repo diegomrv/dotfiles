@@ -18,6 +18,10 @@ Diego's operational repo lives at `~/mainframe/`. If you're working in a project
 - **Skills:** `~/mainframe/.claude/skills/` -- reusable workflows (git-sync-check, sure-import, etc.)
 
 When making significant decisions in any project, log them to the mainframe decision log so context carries across repos.
+
+# Obsidian (macOS machines only)
+Diego's personal notes are an Obsidian vault at `~/Library/Mobile Documents/iCloud~md~obsidian/Documents/Wolfius Vault/` (plain Markdown, iCloud-synced between Mac Mini and MacBook, not on kraken). It is his reading layer, not a replacement for repo docs. Before writing there, read the `obsidian` skill (`~/.claude/skills/obsidian/SKILL.md`): layout, conventions, what belongs (short dated status, decisions, inventories, pointers) and what doesn't (logs, code, secrets, copies of repo docs). The `obsidian` MCP server only connects while Obsidian.app is open; otherwise use the files directly.
+
 # graphify
 - **graphify** (`~/.claude/skills/graphify/SKILL.md`) - any input to knowledge graph. Trigger: `/graphify`
 When the user types `/graphify`, invoke the Skill tool with `skill: "graphify"` before doing anything else.
@@ -33,7 +37,6 @@ After implementing changes, always run the relevant tests and verify they pass b
 Uncapped node worker pools have exhausted swap and forced macOS to suspend apps (2026-08-17: a 9-worker test run used ~13GB). Rules:
 - ALWAYS cap workers on test/build runs: jest/vitest `--maxWorkers=2`, playwright `--workers=2`, or `VITEST_MAX_THREADS=2`.
 - Kill node processes you spawned (dev servers, watchers, workers) when done with them.
-- A PreToolUse hook (`~/.claude/hooks/node-memory-guard.sh`) injects a MEMORY GUARD warning when node RSS or swap gets tight, and blocks heavy runner commands when critical. If you see it: clean up stray node processes first, then re-run with capped workers.
 
 # Shell / Bash Conventions
 When generating shell commands that include dollar signs, special characters, or status-report fields, escape them carefully or use heredocs/quoting to avoid shell mangling.

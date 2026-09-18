@@ -1,2 +1,33 @@
+onboarding = false
+# herdr config. Reference: herdr --default-config
+# Reload after edits: herdr server reload-config
+
+[theme]
+name = "dracula"
+# Follow Ghostty light/dark. Ghostty theme is set by the picker
+# (writes ~/Library/Application Support/com.mitchellh.ghostty/auto/theme.ghostty).
+auto_switch = false
+light_name = "rose-pine-dawn"
+dark_name = "rose-pine"
+
 [ui]
 agent_panel_sort = "priority"
+show_agent_labels_on_pane_borders = false
+hide_tab_bar_when_single_tab = false
+tab_bar_right = [
+  { type = "zoom" },
+  { type = "hostname" },
+  { type = "datetime", format = "%H:%M" },
+]
+tab_bar_right_separator = " · "
+
+# Claude Code puts its current task in the terminal title; show it under each agent row.
+[ui.sidebar.agents.rows_by_agent]
+claude = [["state_icon", "workspace", "tab"], ["terminal_title_stripped"], ["agent"]]
+
+[ui.toast]
+delivery = "herdr"
+
+[experimental]
+# Save recent pane screen history across full server restarts.
+pane_history = true
