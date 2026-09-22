@@ -52,6 +52,22 @@ Use the `agent-browser` CLI for all browser automation and visual checks (screen
 - Always run headless (the default) -- never pass `--headed` unless Diego explicitly asks to watch the browser
 - Some projects (e.g. tennet) have their own agent-browser operations manual in their CLAUDE.md/rules -- follow those when present
 
+## Known bug: `os error 35` on heavy pages -- IT'S A FALSE NEGATIVE (as of 0.38.1)
+
+Upstream issue: https://github.com/vercel-labs/agent-browser/issues/322 (open since Jan 2026)
+
+On render-heavy pages, commands print an error and exit non-zero:
+`Failed to read: Resource temporarily unavailable (os error 35) (after 5 retries - daemon may be busy or unresponsive)`
+
+**The operation actually succeeded.** Verified on 0.38.1: `screenshot --full` on a 60,520px Wikipedia page printed this error, then wrote a correct 1280x60520 / 21MB PNG. Reported on `open` too. The CLI just gives up reading the daemon's reply before the work finishes.
+
+- It's agent-browser's Rust IPC layer, NOT macOS. Don't chase it as an OS bug.
+- Root cause (per issue comments): the daemon calls Playwright without timeouts and hangs; the Rust CLI's socket read gives up after 5 retries. Retry logic shipped, the hang never got fixed.
+- Trigger is render complexity/duration, not page height. Plain tall pages (30k px) are fine; Wikipedia-class pages fail every time. Viewport screenshots are unaffected.
+- The daemon survives (same PID) and the session stays usable -- keep going after the error.
+- **Do not trust the error or exit code. Verify the real outcome:** wait a few seconds, then check the file (`sips -g pixelWidth -g pixelHeight <file>`) or `agent-browser get url`.
+- **`AGENT_BROWSER_DEFAULT_TIMEOUT` does not fix it and actively lies.** Setting it changes the browser launch hash, silently relaunching a blank browser -- you get `✓ Screenshot saved` with a tiny 1280x577 file instead of the real page. A green checkmark is weaker evidence than the error.
+
 <posthog>
 ## PostHog
 
