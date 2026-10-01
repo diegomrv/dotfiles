@@ -14,7 +14,7 @@
     ],
     "defaultMode": "auto"
   },
-  "model": "claude-fable-5-1[1m]",
+  "model": "claude-fable-5-1",
   "hooks": {
     "SessionStart": [
       {
@@ -40,7 +40,6 @@
       }
     ]
   },
-  "enableArtifact": false,
   "statusLine": {
     "type": "command",
     "command": "npx -y ccstatusline@latest",
@@ -50,10 +49,11 @@
     "context7@claude-plugins-official": true,
     "security-guidance@claude-plugins-official": true,
     "claude-md-management@claude-plugins-official": true,
-    "figma@claude-plugins-official": true,
     "pr-review-toolkit@claude-plugins-official": true,
     "impeccable@impeccable": true,
-    "skill-creator@claude-plugins-official": true
+    "skill-creator@claude-plugins-official": true,
+    "figma@claude-plugins-official": true,
+    "typesafe@typesafe-ai": true
   },
   "extraKnownMarketplaces": {
     "impeccable": {
@@ -62,14 +62,41 @@
         "repo": "pbakaus/impeccable"
       },
       "autoUpdate": true
+    },
+    "claude-plugins-official": {
+      "source": {
+        "source": "github",
+        "repo": "anthropics/claude-plugins-official"
+      }
+    },
+    "webflow-skills": {
+      "source": {
+        "source": "github",
+        "repo": "webflow/webflow-skills"
+      },
+      "autoUpdate": true
+    },
+    "typesafe-ai": {
+      "source": {
+        "source": "github",
+        "repo": "typesafe-ai/skills"
+      },
+      "autoUpdate": true
     }
   },
   "effortLevel": "xhigh",
+  "modelSettings": {
+    "claude-opus-5-5": {
+      "effortLevel": "xhigh"
+    }
+  },
+  "advisorModel": "fable",
   "awaySummaryEnabled": false,
   "showClearContextOnPlanAccept": true,
   "autoUpdatesChannel": "latest",
   "tui": "fullscreen",
-  "theme": "light-ansi",
+  "skipDangerousModePermissionPrompt": true,
+  "theme": "dark-ansi",
   "switchModelsOnFlag": false,
   "agentPushNotifEnabled": true,
   "skipAutoPermissionPrompt": true,
