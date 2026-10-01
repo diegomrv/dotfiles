@@ -39,3 +39,4 @@ Thumbs.db
 .config/gws/cache/
 .config/herdr/*
 !.config/herdr/config.toml
+.config/herdr-mobile-dev/
