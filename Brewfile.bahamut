@@ -12,6 +12,10 @@ brew "agent-browser"
 brew "caddy", restart_service: :changed
 # Cloudflare Tunnel client (formerly Argo Tunnel)
 brew "cloudflared"
+# Dependency Manager for PHP
+brew "composer"
+# Lightweight DNS forwarder and DHCP server (localdev: *.test; root service, sudo brew services)
+brew "dnsmasq"
 # Command-line tool for DigitalOcean
 brew "doctl"
 # More intuitive version of du in rust
@@ -40,6 +44,8 @@ brew "glow"
 brew "googleworkspace-cli"
 # Agent multiplexer that lives in your terminal
 brew "herdr"
+# Tools and libraries to manipulate images (for the imagick PECL extension)
+brew "imagemagick"
 # Simple terminal UI for git commands
 brew "lazygit"
 # Find what models run on your hardware
@@ -53,9 +59,9 @@ brew "nginx"
 # Prompt theme engine for any shell
 brew "oh-my-posh"
 # General-purpose scripting language
-brew "php", restart_service: :changed
-# General-purpose scripting language
-brew "php@8.4"
+brew "php"
+# General-purpose scripting language (localdev php-fpm + CLI)
+brew "php@8.4", restart_service: :changed
 # CLI for Playwright: record/generate code, inspect selectors, take screenshots
 brew "playwright-cli"
 # Rsync for cloud storage

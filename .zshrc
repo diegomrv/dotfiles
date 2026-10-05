@@ -113,7 +113,8 @@ function y() {
 
 command -v fastfetch >/dev/null 2>&1 && fastfetch
 
-if command -v wt >/dev/null 2>&1; then eval "$(command wt config shell init zsh)"; fi
+# worktrunk's shell hook; skipped for localdev's own `wt` (~/projects/code/localdev)
+if command -v wt >/dev/null 2>&1 && [[ $(command -v wt) != */localdev/bin/wt ]]; then eval "$(command wt config shell init zsh)"; fi
 
 # NOTE: installers (Herd, LM Studio, pnpm, ...) like to append their own blocks
 # down here with absolute /Users/<user>/... paths. Those leak onto Linux boxes

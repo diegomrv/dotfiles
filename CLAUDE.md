@@ -31,10 +31,10 @@ stow -n -v -t "$HOME" .
 
 ### Shell Configuration
 - `.zshrc` - Main config, detects OS and sources appropriate file
-- `.zsh/macos.zsh` - macOS-specific (Homebrew paths, Herd PHP)
+- `.zsh/macos.zsh` - macOS-specific (Homebrew paths, php@8.4 CLI, localdev `wt`/`dev` on PATH)
 - `.zsh/ubuntu.zsh` - Linux/WSL-specific (LinuxBrew, Wayland)
 - `.zsh/hosts/<hostname>.zsh` - Per-machine config, **tracked in git**, auto-sourced by `.zshrc` based on hostname (`bahamut` = Mac mini, `highwind` = MacBook, `kraken` = homelab server). NON-SECRET config only.
-- `.zshrc.local` - Machine-specific **secrets** + overrides (gitignored -- API keys, Herd paths)
+- `.zshrc.local` - Machine-specific **secrets** + overrides (gitignored -- API keys)
 - `.aliases` - Custom shell aliases
 
 ### Homebrew Packages

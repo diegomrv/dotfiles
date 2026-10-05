@@ -12,7 +12,7 @@ brew "agent-browser"
 # Codec library for encoding and decoding AV1 video streams
 brew "aom"
 # Powerful, enterprise-ready, open source web server with automatic HTTPS
-brew "caddy"
+brew "caddy", restart_service: :changed
 # Library for manipulating PNG images
 brew "libpng"
 # Software library to render fonts
@@ -23,8 +23,12 @@ brew "fontconfig"
 brew "glib"
 # Cloudflare Tunnel client (formerly Argo Tunnel)
 brew "cloudflared"
+# Dependency Manager for PHP
+brew "composer"
 # C library implementing the SSH2 protocol
 brew "libssh2"
+# Lightweight DNS forwarder and DHCP server (localdev: *.test; root service, sudo brew services)
+brew "dnsmasq"
 # Command-line tool for DigitalOcean
 brew "doctl"
 # More intuitive version of du in rust
@@ -65,6 +69,8 @@ brew "gnutls"
 brew "googleworkspace-cli"
 # OpenType text shaping engine
 brew "harfbuzz"
+# Tools and libraries to manipulate images (for the imagick PECL extension)
+brew "imagemagick"
 # Simple terminal UI for git commands
 brew "lazygit"
 # Library for JPEG-2000 image manipulation
@@ -80,9 +86,9 @@ brew "neovim"
 # HTTP(S) server and reverse proxy, and IMAP/POP3 proxy server
 brew "nginx"
 # General-purpose scripting language
-brew "php", restart_service: :changed
-# General-purpose scripting language
-brew "php@8.4"
+brew "php"
+# General-purpose scripting language (localdev php-fpm + CLI)
+brew "php@8.4", restart_service: :changed
 # CLI for Playwright: record/generate code, inspect selectors, take screenshots
 brew "playwright-cli"
 # PDF rendering library (based on the xpdf-3.0 code base)

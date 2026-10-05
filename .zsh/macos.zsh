@@ -24,12 +24,12 @@ unset _d
 # keg-only mysql CLI (replaces removed mysql@8.0)
 [[ -d /opt/homebrew/opt/mysql-client/bin ]] && export PATH="/opt/homebrew/opt/mysql-client/bin:$PATH"
 
-# Laravel Herd (injected by Herd; kept here so it stays off Linux machines)
-if [[ -d "$HOME/Library/Application Support/Herd/bin" ]]; then
-  export PATH="$HOME/Library/Application Support/Herd/bin:$PATH"
-  export HERD_PHP_84_INI_SCAN_DIR="$HOME/Library/Application Support/Herd/config/php/84/"
-  export HERD_PHP_82_INI_SCAN_DIR="$HOME/Library/Application Support/Herd/config/php/82/"
-fi
+# PHP CLI = Homebrew php@8.4, the version localdev's php-fpm serves *.test with
+# (Herd retired 2026-10-05; see ~/projects/code/localdev)
+[[ -d /opt/homebrew/opt/php@8.4/bin ]] && export PATH="/opt/homebrew/opt/php@8.4/bin:$PATH"
+
+# localdev: wt (worktrees that boot) and dev (JS dev server at <folder>.test)
+[[ -d "$HOME/projects/code/localdev/bin" ]] && export PATH="$HOME/projects/code/localdev/bin:$PATH"
 
 # LM Studio CLI (lms)
 [[ -d "$HOME/.lmstudio/bin" ]] && export PATH="$PATH:$HOME/.lmstudio/bin"
