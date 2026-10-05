@@ -22,6 +22,9 @@ When making significant decisions in any project, log them to the mainframe deci
 # Obsidian (macOS machines only)
 Diego's personal notes are an Obsidian vault at `~/Library/Mobile Documents/iCloud~md~obsidian/Documents/Wolfius Vault/` (plain Markdown, iCloud-synced between Mac Mini and MacBook, not on kraken). It is his reading layer, not a replacement for repo docs. Before writing there, read the `obsidian` skill (`~/.claude/skills/obsidian/SKILL.md`): layout, conventions, what belongs (short dated status, decisions, inventories, pointers) and what doesn't (logs, code, secrets, copies of repo docs). The `obsidian` MCP server only connects while Obsidian.app is open; otherwise use the files directly.
 
+# Google Workspace (macOS machines only)
+Gmail, Google Calendar, Drive, Sheets and Docs are reached through `gwsa`, Diego's local multi-account wrapper around the `gws` CLI. Accounts: `personal` (gmail.com, the default) and `work` (strangepixels.co). Never call `gws` bare: it has no credentials, or the wrong account's. Prefer `gwsa` over the claude.ai Gmail / Calendar / Drive MCP tools unless Diego asks for them. Load the `gwsa` skill (`~/.claude/skills/gwsa/SKILL.md`) before the first call: invocation shape, `--params` vs `--json`, auth errors.
+
 # graphify
 - **graphify** (`~/.claude/skills/graphify/SKILL.md`) - any input to knowledge graph. Trigger: `/graphify`
 When the user types `/graphify`, invoke the Skill tool with `skill: "graphify"` before doing anything else.
