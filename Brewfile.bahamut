@@ -144,7 +144,7 @@ cask "telegram"
 cask "ticktick"
 # Speech-to-text and AI text processing
 cask "typewhisper/tap/typewhisper", trusted: true
-uv "graphifyy"
+uv "terrahour"
 npm "@llamaindex/liteparse"
 npm "@posthog/cli"
 npm "corepack"

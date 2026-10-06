@@ -25,11 +25,6 @@ Diego's personal notes are an Obsidian vault at `~/Library/Mobile Documents/iClo
 # Google Workspace (macOS machines only)
 Gmail, Google Calendar, Drive, Sheets and Docs are reached through `gwsa`, Diego's local multi-account wrapper around the `gws` CLI. Accounts: `personal` (gmail.com, the default) and `work` (strangepixels.co). Never call `gws` bare: it has no credentials, or the wrong account's. Prefer `gwsa` over the claude.ai Gmail / Calendar / Drive MCP tools unless Diego asks for them. Load the `gwsa` skill (`~/.claude/skills/gwsa/SKILL.md`) before the first call: invocation shape, `--params` vs `--json`, auth errors.
 
-# graphify
-- **graphify** (`~/.claude/skills/graphify/SKILL.md`) - any input to knowledge graph. Trigger: `/graphify`
-When the user types `/graphify`, invoke the Skill tool with `skill: "graphify"` before doing anything else.
-Only use graphify when the project already uses it (a `graphify-out/` folder exists in the repo) or when explicitly invoked via `/graphify`. Do not treat ordinary codebase/document questions as graphify queries otherwise.
-
 # GitHub Workflow
 When the user asks to create GitHub issues, file the issues directly -- do NOT pivot into planning or implementing the fixes unless explicitly asked.
 

@@ -185,5 +185,4 @@ cask "ticktick"
 cask "typewhisper/tap/typewhisper", trusted: true
 # Multiplayer code editor
 cask "zed"
-uv "graphifyy"
 npm "corepack"
