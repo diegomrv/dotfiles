@@ -143,8 +143,6 @@ cask "bruno"
 cask "codex"
 # Menu bar usage monitor for Codex and Claude
 cask "codexbar"
-# Window peeking utility app
-cask "dockdoor"
 # Collaborative team software
 cask "figma"
 # Web browser
@@ -159,8 +157,6 @@ cask "gcloud-cli"
 cask "ghostty"
 # Free and open-source media player
 cask "iina"
-# Menu bar manager
-cask "jordanbaird-ice"
 # Trims video and audio files losslessly
 cask "losslesscut"
 # Intercept, modify, replay, save HTTP/S traffic
@@ -177,8 +173,6 @@ cask "obs"
 cask "obsidian"
 # Utility to uninstall apps and remove leftover files from old/uninstalled apps
 cask "pearcleaner"
-# PHP IDE by JetBrains
-cask "phpstorm"
 # Open source virtual/remote desktop application
 cask "rustdesk"
 # Native GUI tool for relational databases
