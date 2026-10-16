@@ -44,8 +44,6 @@ brew "herdr"
 brew "imagemagick"
 # Simple terminal UI for git commands
 brew "lazygit"
-# Find what models run on your hardware
-brew "llmfit"
 # Deep clean and optimize your Mac
 brew "mole"
 # Ambitious Vim-fork focused on extensibility and agility
@@ -56,8 +54,6 @@ brew "oh-my-posh"
 brew "php"
 # General-purpose scripting language (localdev php-fpm + CLI)
 brew "php@8.4", restart_service: :changed
-# CLI for Playwright: record/generate code, inspect selectors, take screenshots
-brew "playwright-cli"
 # Rsync for cloud storage
 brew "rclone"
 # Persistent key-value database, with built-in net interface
