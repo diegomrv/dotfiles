@@ -35,8 +35,6 @@ alias vi="nvim"
 alias ls="eza --icons --group-directories-first"
 alias ll="eza --icons --group-directories-first -la"
 
-alias storm="open -a 'phpstorm.app' ."
-
 alias convertvideo='convert_video'
 alias convertvideohdr='convert_video_hdr_aggressive'
 

@@ -60,7 +60,7 @@ if [[ $- == *i* ]]; then
 fi
 
 # Additional PATH entries
-export PATH="$HOME/.local/bin:$PATH"         # CodeRabbit CLI, pipx, etc.
+export PATH="$HOME/.local/bin:$PATH"         # claude, gwsa, herdr, pi, etc.
 # Source custom functions
 [[ -f "$HOME/.zsh/functions/video.zsh" ]] && source "$HOME/.zsh/functions/video.zsh"
 
@@ -93,7 +93,7 @@ load-nvmrc() {
 add-zsh-hook chpwd load-nvmrc
 load-nvmrc
 
-# Source machine-local secrets/config (gitignored -- API keys, Herd paths, etc.)
+# Source machine-local secrets/config (gitignored -- API keys, etc.)
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
 
 # Source per-machine tracked config, auto-selected by hostname
@@ -120,3 +120,4 @@ if command -v wt >/dev/null 2>&1 && [[ $(command -v wt) != */localdev/bin/wt ]];
 # down here with absolute /Users/<user>/... paths. Those leak onto Linux boxes
 # (kraken) and clobber the values set in .zsh/ubuntu.zsh. Move anything they add
 # into .zsh/macos.zsh instead, and keep it $HOME-relative.
+

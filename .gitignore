@@ -13,6 +13,7 @@
 .config/soloterm/
 .config/psysh/
 .config/zed/prompts/
+.config/higgsfield/
 
 # Runtime files
 *.log
