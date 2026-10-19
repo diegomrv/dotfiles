@@ -19,6 +19,9 @@ Diego's operational repo lives at `~/mainframe/`. If you're working in a project
 
 When making significant decisions in any project, log them to the mainframe decision log so context carries across repos.
 
+# Remote Sessions (herdr --remote)
+Diego often drives bahamut from his MacBook with `herdr --remote`. If he mentions a file he just downloaded, saved or exported (WhatsApp exports, voice notes, screenshots) and it isn't on this machine, it's probably in the MacBook's ~/Downloads. Say so right away and ask him to copy it over (he usually puts it in ~/Desktop on bahamut) instead of searching the disk.
+
 # Obsidian (macOS machines only)
 Diego's personal notes are an Obsidian vault at `~/Library/Mobile Documents/iCloud~md~obsidian/Documents/Wolfius Vault/` (plain Markdown, iCloud-synced between Mac Mini and MacBook, not on kraken). It is his reading layer, not a replacement for repo docs. Before writing there, read the `obsidian` skill (`~/.claude/skills/obsidian/SKILL.md`): layout, conventions, what belongs (short dated status, decisions, inventories, pointers) and what doesn't (logs, code, secrets, copies of repo docs). The `obsidian` MCP server only connects while Obsidian.app is open; otherwise use the files directly.
 
