@@ -26,6 +26,16 @@
             "timeout": 10
           }
         ]
+      },
+      {
+        "matcher": "^(startup|resume|clear|compact|fork)$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash '/Users/drodriguez/.claude/hooks/herdr-agent-state.sh' session",
+            "timeout": 10
+          }
+        ]
       }
     ],
     "SubagentStart": [
@@ -139,5 +149,6 @@
   "voiceEnabled": true,
   "feedbackSurveyState": {
     "lastShownTime": 1754321351818
-  }
+  },
+  "enableWorkflows": false
 }
