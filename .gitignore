@@ -41,3 +41,9 @@ Thumbs.db
 .config/herdr/*
 !.config/herdr/config.toml
 .config/herdr-mobile-dev/
+
+# Installer-managed skill symlinks (npx skills), machine-specific
+.config/opencode/skills/
+
+# App lock files
+.config/codexbar/*.lock
