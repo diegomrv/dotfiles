@@ -13,11 +13,11 @@ Diego's operational repo lives at `~/mainframe/`. If you're working in a project
 
 **Does NOT apply on kraken (the homelab server):** `~/mainframe/` does not exist there, and `~/homelab-docs/` is self-contained — it keeps its own logs (MAINTENANCE-LOG.md). Skip mainframe logging entirely on kraken.
 
-- **Decision log:** `~/mainframe/decisions/log.md` -- append-only. Log meaningful decisions with format: `[YYYY-MM-DD] DECISION: ... | REASONING: ... | CONTEXT: ...`
+- **Decision log:** `~/mainframe/decisions/log.md` -- append-only, for **cross-cutting** decisions only (machines, network, tools and workflow, money, which project gets time). Format: `[YYYY-MM-DD] DECISION: ... | REASONING: ... | CONTEXT: ...`, one or two lines.
 - **Project READMEs:** `~/mainframe/projects/<name>/README.md` -- status and context for active workstreams
 - **Skills:** `~/mainframe/.claude/skills/` -- reusable workflows (git-sync-check, sure-import, etc.)
 
-When making significant decisions in any project, log them to the mainframe decision log so context carries across repos.
+Project decisions (PRs, client calls, design or scope choices) go in that project's own repo (e.g. `docs/decisions.md`), NOT the mainframe log. Only log there when a decision reaches beyond the project.
 
 # Remote Sessions (herdr --remote)
 **Assume Diego is sitting at the machine this session runs on.** Occasionally he drives bahamut from his MacBook with `herdr --remote`, but nothing inside a pane tells you that (`HERDR_ENV=1` is set either way), so never infer it.
