@@ -23,6 +23,7 @@ brew_shellenv() {
   for b in /opt/homebrew/bin/brew /home/linuxbrew/.linuxbrew/bin/brew; do
     [[ -x $b ]] && { eval "$("$b" shellenv)"; return; }
   done
+  return 0  # no Homebrew (ragnarok) is fine; a failing status would trip set -e
 }
 brew_shellenv
 
