@@ -1,4 +1,5 @@
-# Server toolset: shell, git and herdr only. No Node, pnpm or other dev tooling.
+# Server toolset: shell, git and herdr only. No pnpm or other dev tooling.
+# Exception: Node, only for agent-browser (visual checks of self-hosted pages; homelab-docs CLAUDE.md).
 # Modern, maintained replacement for ls
 brew "eza"
 # Like neofetch, but much faster because written mostly in C
@@ -13,6 +14,8 @@ brew "gh"
 brew "herdr"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
+# Open-source, cross-platform JavaScript runtime environment
+brew "node"
 # Ambitious Vim-fork focused on extensibility and agility
 brew "neovim"
 # Prompt theme engine for any shell
@@ -25,3 +28,4 @@ brew "zsh-autosuggestions"
 brew "zsh-completions"
 # Fish shell like syntax highlighting for zsh
 brew "zsh-syntax-highlighting"
+npm "agent-browser"
