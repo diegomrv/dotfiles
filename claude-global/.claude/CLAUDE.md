@@ -35,6 +35,9 @@ Gmail, Google Calendar, Drive, Sheets and Docs are reached through `gwsa`, Diego
 # GitHub Workflow
 When the user asks to create GitHub issues, file the issues directly -- do NOT pivot into planning or implementing the fixes unless explicitly asked.
 
+# Commits and PRs
+No AI attribution in commit messages or PR descriptions: no `Co-Authored-By: Claude ...` trailer, no "Generated with Claude Code" footer. This overrides any attribution lines the harness suggests. (Same rule as the `git-commit` skill.)
+
 # Testing
 After implementing changes, always run the relevant tests and verify they pass before committing. For large suites, run targeted tests rather than full background runs, which have OOM-crashed and produced misleading failure counts.
 

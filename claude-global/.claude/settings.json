@@ -140,5 +140,10 @@
   "feedbackSurveyState": {
     "lastShownTime": 1754321351818
   },
-  "enableWorkflows": false
+  "enableWorkflows": false,
+  "sandbox": {
+    "excludedCommands": [
+      "agent-browser *"
+    ]
+  }
 }
