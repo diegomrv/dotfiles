@@ -33,9 +33,30 @@ fi
 echo ""
 echo "=== Applying dotfiles with Stow ==="
 
+# No --adopt: it moves existing files (e.g. the stub ~/.zshrc a pnpm installer
+# writes) INTO the repo, over the tracked ones. Instead, move anything in the
+# way to a timestamped backup, then stow normally.
+BACKUP_DIR="$HOME/.dotfiles-backup/$(date +%Y%m%d-%H%M%S)"
+
+stow_with_backup() {
+  local pkg="$1" target
+  # Dry run lists each conflict as "... over existing target <path> since ..."
+  # (path relative to $HOME). Other conflict kinds aren't parsed here; the real
+  # stow below then fails loudly instead.
+  { stow -n -t "$HOME" "$pkg" 2>&1 || true; } |
+    sed -n 's/.* over existing target \(.*\) since neither a link nor a directory.*/\1/p' |
+    while IFS= read -r target; do
+      mkdir -p "$BACKUP_DIR/$(dirname "$target")"
+      mv "$HOME/$target" "$BACKUP_DIR/$target"
+      echo "  Backed up ~/$target -> $BACKUP_DIR/$target"
+    done
+  stow -t "$HOME" "$pkg"
+}
+
 if command -v stow &>/dev/null; then
-  stow --adopt -t "$HOME" .
-  stow --adopt -t "$HOME" claude-global
+  cd "$SCRIPT_DIR"
+  stow_with_backup .
+  stow_with_backup claude-global
   echo "Symlinks created"
 else
   echo "Warning: stow not found, skipping dotfiles linking"

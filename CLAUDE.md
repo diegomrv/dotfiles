@@ -15,8 +15,10 @@ Personal dotfiles repository using **GNU Stow** for symlink-based deployment. Su
 # Install packages and create symlinks
 ./install.sh
 
-# Apply dotfiles manually (creates symlinks to $HOME)
-stow --adopt -t "$HOME" .
+# Apply dotfiles manually (creates symlinks to $HOME). Don't add --adopt: it moves
+# existing $HOME files into the repo over the tracked ones. install.sh backs up
+# conflicts to ~/.dotfiles-backup/<timestamp>/ instead.
+stow -t "$HOME" .
 
 # Preview what stow would do without making changes
 stow -n -v -t "$HOME" .

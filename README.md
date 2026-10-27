@@ -61,7 +61,7 @@ That's it. Restart your terminal.
 
 **`install.sh`** does the rest:
 - Runs `brew bundle` from this machine's `Brewfile.<hostname>`, if one exists
-- Runs `stow` to symlink everything to `$HOME`
+- Runs `stow` to symlink everything to `$HOME`, first moving any existing file in the way to `~/.dotfiles-backup/<timestamp>/`
 
 ### Manual steps after install
 
@@ -71,7 +71,7 @@ That's it. Restart your terminal.
 
 ## Brewfile
 
-Homebrew packages are tracked per machine in `Brewfile.<hostname>` (`bahamut`, `highwind`, `kraken`) -- the machines deliberately carry different packages. To update the current machine's file after installing something new:
+Homebrew packages are tracked per machine in `Brewfile.<hostname>` (`bahamut`, `highwind`, `kraken`, `hades`) -- the machines deliberately carry different packages. To update the current machine's file after installing something new:
 
 ```bash
 brewsave            # dump this machine into its own Brewfile
@@ -83,7 +83,7 @@ brewdiff kraken bahamut   # ...or any other pair
 ## Adding new dotfiles
 
 1. Place the file at the repo root, mirroring its `$HOME` path (e.g., `.config/tool/config`)
-2. Run `stow --adopt -t "$HOME" .` to create the symlink
+2. Run `stow -t "$HOME" .` to create the symlink (move the original out of `$HOME` first, or stow reports a conflict)
 3. If the file shouldn't be symlinked, add it to `.stow-local-ignore`
 4. If it's machine-specific, add it to `.gitignore`
 
