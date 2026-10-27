@@ -8,8 +8,6 @@
 export DOTFILES_DIR="${${:-$HOME/.zshrc}:A:h:h}"
 HOST_NAME="$(scutil --get LocalHostName 2>/dev/null || hostname -s)"
 
-typeset -U path   # drop duplicate PATH entries
-
 # Homebrew (macOS or Linuxbrew), if this machine has it
 for _brew in /opt/homebrew/bin/brew /home/linuxbrew/.linuxbrew/bin/brew; do
   [[ -x $_brew ]] && { eval "$($_brew shellenv)"; break; }
