@@ -1,1 +1,1 @@
-../claude-global/.claude/CLAUDE.md
+../../claude/.claude/CLAUDE.md
