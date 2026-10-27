@@ -7,7 +7,8 @@ Guidance for Claude Code when working in this repository. For the human overview
 GNU Stow, one package per role. Each top-level folder except `machines/` is a package that mirrors `$HOME`:
 
 - `shell/` (every machine), `claude/` (Macs, servers, ragnarok), `dev/` (Macs), `desktop/` (Macs, ragnarok), `macos/` (Macs)
-- `machines/<hostname>/packages` lists what that machine links; `Brewfile` its Homebrew packages; `host.zsh` its own shell config (sourced from the repo by `.zshrc`, not stowed)
+- `machines/<hostname>/packages` lists what that machine links; `Brewfile` (Macs, kraken) or `apt` (hades) its tools; `host.zsh` its own shell config (sourced from the repo by `.zshrc`, not stowed)
+- Homebrew is for the Macs. Linux machines use their distro's package manager; kraken is the exception until it leaves Ubuntu 24.04, whose apt lacks fastfetch and has an fzf too old for `fzf --zsh`. Tools no distro ships (oh-my-posh, herdr) come from their upstream installers into `~/.local/bin`
 - `install.sh` does everything: tools, then `--links` (remove every link into the repo, then stow the machine's packages). `--unlink` only removes
 
 Where shell config goes:

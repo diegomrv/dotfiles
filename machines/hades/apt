@@ -1,0 +1,16 @@
+# Ubuntu packages for hades (26.04). ./install.sh installs them with apt-get.
+# Server toolset: shell, git and herdr only. No Node, pnpm or other dev tooling.
+# Not in apt, so install.sh gets them from upstream into ~/.local/bin: oh-my-posh, herdr.
+zsh
+stow
+eza
+fastfetch
+fd-find     # installs as fdfind; install.sh links it to ~/.local/bin/fd
+fzf
+gh
+jq
+neovim
+unzip       # the oh-my-posh installer needs it
+zoxide
+zsh-autosuggestions
+zsh-syntax-highlighting

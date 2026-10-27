@@ -1,7 +1,8 @@
 #!/bin/bash
 # Set up this machine from machines/<hostname>/:
 #   packages   which stow packages to link (shell, claude, dev, desktop, macos)
-#   Brewfile   Homebrew packages; machines without one skip Homebrew
+#   Brewfile   Homebrew packages (Macs, kraken); machines without one skip Homebrew
+#   apt        Ubuntu packages, one per line (hades)
 #   host.zsh   machine-only shell config, sourced by .zshrc straight from the repo
 #
 #   ./install.sh            install tools, then link
@@ -16,6 +17,16 @@ MACHINE="$DOTFILES/machines/$HOST_NAME"
 MODE="${1:-all}"
 
 have() { command -v "$1" >/dev/null 2>&1; }
+
+# One item per line, comments and blank lines dropped (packages, apt)
+read_list() {
+  local line
+  while IFS= read -r line; do
+    line="${line%%#*}"
+    line="${line//[[:space:]]/}"
+    if [[ -n $line ]]; then echo "$line"; fi
+  done < "$1"
+}
 
 # Homebrew on PATH even from a bare shell (fresh machine, ssh host command)
 brew_shellenv() {
@@ -119,6 +130,14 @@ install_tools() {
     brew bundle --file="$MACHINE/Brewfile"
   fi
 
+  # Linux machines use their distro's packages; Homebrew is for the Macs
+  # (and kraken, until it moves to an Ubuntu whose apt has recent enough tools)
+  if [[ -f "$MACHINE/apt" ]]; then
+    echo "=== apt packages from machines/$HOST_NAME/apt ==="
+    sudo apt-get update -q
+    sudo apt-get install -y $(read_list "$MACHINE/apt")
+  fi
+
   # zsh and stow: the Mac Brewfiles carry them, Linux gets them from the system
   local -a missing=()
   have zsh || missing+=(zsh)
@@ -132,6 +151,23 @@ install_tools() {
     fi
   fi
   [[ $SHELL == */zsh ]] || chsh -s "$(command -v zsh)"
+
+  # Debian and Ubuntu ship fd as fdfind
+  mkdir -p "$HOME/.local/bin"
+  if have fdfind && ! have fd && [[ ! -e "$HOME/.local/bin/fd" ]]; then
+    ln -s "$(command -v fdfind)" "$HOME/.local/bin/fd"
+  fi
+
+  # Not in apt. The upstream installers put them in ~/.local/bin, and both update
+  # themselves (oh-my-posh upgrade, herdr update)
+  if ! have oh-my-posh && [[ ! -x "$HOME/.local/bin/oh-my-posh" ]]; then
+    echo "=== Installing oh-my-posh ==="
+    curl -fsSL https://ohmyposh.dev/install.sh | bash -s -- -d "$HOME/.local/bin"
+  fi
+  if ! have herdr && [[ ! -x "$HOME/.local/bin/herdr" ]]; then
+    echo "=== Installing herdr ==="
+    curl -fsSL https://herdr.dev/install.sh | sh
+  fi
 
   if uses claude && ! have claude && [[ ! -x "$HOME/.local/bin/claude" ]]; then
     echo "=== Installing Claude Code ==="
@@ -159,7 +195,7 @@ install_tools() {
 case "$MODE" in
   --unlink) unlink_all; exit 0 ;;
   all | --links) ;;
-  *) sed -n '2,10p' "$0"; exit 1 ;;
+  *) sed -n '2,11p' "$0"; exit 1 ;;
 esac
 
 if [[ ! -f "$MACHINE/packages" ]]; then
@@ -168,11 +204,7 @@ if [[ ! -f "$MACHINE/packages" ]]; then
   exit 1
 fi
 PACKAGES=()
-while IFS= read -r line; do
-  line="${line%%#*}"
-  line="${line//[[:space:]]/}"
-  [[ -n $line ]] && PACKAGES+=("$line")
-done < "$MACHINE/packages"
+while IFS= read -r pkg; do PACKAGES+=("$pkg"); done < <(read_list "$MACHINE/packages")
 
 [[ $MODE == all ]] && install_tools
 

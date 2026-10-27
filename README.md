@@ -19,7 +19,7 @@ Every machine gets only the packages it needs: a server doesn't get Node, Zed or
 Each machine has a folder in `machines/<hostname>/`:
 
 - `packages`: which packages to link
-- `Brewfile`: Homebrew packages (none on ragnarok, which uses pacman)
+- `Brewfile` or `apt`: the machine's tools. Homebrew on the Macs; Linux uses its own package manager (hades: `apt` list; ragnarok: pacman, not listed). kraken stays on Homebrew until it moves to Ubuntu 26.04: 24.04's apt is too old (fzf, neovim, Node) or missing things (fastfetch)
 - `host.zsh`: shell config for that machine only, sourced straight from the repo
 
 | Machine | What it is | Packages |
@@ -42,8 +42,8 @@ cd ~/dotfiles
 
 A new machine needs `machines/<hostname>/packages` first (copy the closest one). `install.sh` then:
 
-1. Installs Homebrew and the machine's Brewfile, if it has one
-2. Installs zsh and stow if missing, makes zsh the login shell
+1. Installs Homebrew and the machine's Brewfile, or its `apt` list, whichever it has
+2. Installs zsh and stow if missing, makes zsh the login shell. Links `fdfind` to `fd` (Ubuntu's name), and installs oh-my-posh and herdr into `~/.local/bin` from upstream if no package manager provided them
 3. Installs Claude Code (if `claude` is listed), and nvm + Node LTS + pnpm (if `dev` is listed)
 4. Removes every old link into the repo, then links the listed packages. Files in the way go to `~/.dotfiles-backup/<timestamp>/`
 
@@ -57,7 +57,7 @@ After setup: sign into 1Password (SSH agent), `gh auth login`, and put secrets i
 brewsave             # write this machine's installed packages to its Brewfile
 brewinstall          # install from this machine's Brewfile
 brewdiff             # what bahamut has that highwind doesn't
-brewdiff kraken hades
+brewdiff bahamut kraken
 ```
 
 `brew bundle` never uninstalls. To remove what's no longer listed: `brew bundle cleanup --file=machines/<host>/Brewfile --force`.
