@@ -45,5 +45,8 @@ Thumbs.db
 # Installer-managed skill symlinks (npx skills), machine-specific
 .config/opencode/skills/
 
+# Claude Code's claude.ai skill sync (~/.claude/skills is stow-folded into this repo)
+claude-global/.claude/skills/synced/
+
 # App lock files
 .config/codexbar/*.lock
