@@ -17,6 +17,15 @@ MODE="${1:-all}"
 
 have() { command -v "$1" >/dev/null 2>&1; }
 
+# Homebrew on PATH even from a bare shell (fresh machine, ssh host command)
+brew_shellenv() {
+  local b
+  for b in /opt/homebrew/bin/brew /home/linuxbrew/.linuxbrew/bin/brew; do
+    [[ -x $b ]] && { eval "$("$b" shellenv)"; return; }
+  done
+}
+brew_shellenv
+
 # =============================================================================
 # Links
 # =============================================================================
@@ -104,11 +113,7 @@ install_tools() {
       echo "=== Installing Homebrew ==="
       /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     fi
-    # Fresh machine: brew isn't on PATH until the stowed .zshrc loads
-    local b
-    for b in /opt/homebrew/bin/brew /home/linuxbrew/.linuxbrew/bin/brew; do
-      [[ -x $b ]] && { eval "$("$b" shellenv)"; break; }
-    done
+    brew_shellenv
     echo "=== Homebrew packages from machines/$HOST_NAME/Brewfile ==="
     brew bundle --file="$MACHINE/Brewfile"
   fi
