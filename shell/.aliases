@@ -1,0 +1,68 @@
+alias zconfig="nvim ~/.zshrc"
+alias zrel="source ~/.zshrc"
+
+releasethekraken() {
+  if ping -c 1 -W 1 10.0.0.30 &>/dev/null; then
+    ssh wolfius@10.0.0.30 "$@"
+  else
+    ssh wolfius@kraken "$@"
+  fi
+}
+
+unleashragnarok() {
+  if ping -c 1 -W 1 10.0.0.2 &>/dev/null; then
+    ssh wolfius@10.0.0.2 "$@"
+  else
+    ssh wolfius@ragnarok "$@"
+  fi
+}
+
+# Always go through the "bahamut" ssh config host so ControlMaster sockets are shared
+# (LAN IP override when reachable, Tailscale name otherwise)
+megaflare() {
+  if ping -c 1 -W 1 10.0.0.10 &>/dev/null; then
+    ssh -o HostName=10.0.0.10 bahamut "$@"
+  else
+    ssh bahamut "$@"
+  fi
+}
+
+alias vi="nvim"
+
+alias ls="eza --icons --group-directories-first"
+alias ll="eza --icons --group-directories-first -la"
+
+alias ga='git add'
+alias gs='git status'
+alias gcm='git commit -m'
+alias gcb='git checkout -b'
+alias gco='git checkout'
+alias gf='git fetch'
+alias gpl='git pull'
+alias gp='git push'
+
+# Make sudo vi/vim use neovim (uses full path for sudo's restricted PATH)
+sudo() {
+    if [[ "$1" == "vi" || "$1" == "vim" ]]; then
+        shift
+        command sudo "$(command -v nvim)" "$@"
+    else
+        command sudo "$@"
+    fi
+}
+
+# Make sudoedit use neovim (preserves SUDO_EDITOR from env)
+alias sudoedit='sudo SUDO_EDITOR="$(command -v nvim)" -e'
+
+# Homebrew: one Brewfile per machine (machines/<host>/Brewfile) since the machines deliberately
+# differ. $DOTFILES_DIR and $HOST_NAME come from .zshrc.
+alias brewsave='brew bundle dump --force --file="$DOTFILES_DIR/machines/$HOST_NAME/Brewfile"'
+alias brewinstall='brew bundle --file="$DOTFILES_DIR/machines/$HOST_NAME/Brewfile"'
+
+# What one machine has that another doesn't (< first arg, > second). Defaults to the two Macs.
+brewdiff() {
+  local a="${1:-bahamut}" b="${2:-highwind}"
+  echo "< $a   > $b"
+  diff <(grep -v "^#" "$DOTFILES_DIR/machines/$a/Brewfile" | sort) \
+       <(grep -v "^#" "$DOTFILES_DIR/machines/$b/Brewfile" | sort)
+}

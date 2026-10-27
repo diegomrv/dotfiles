@@ -1,0 +1,27 @@
+# Server toolset: shell, git and herdr only. No Node, pnpm or other dev tooling.
+# Modern, maintained replacement for ls
+brew "eza"
+# Like neofetch, but much faster because written mostly in C
+brew "fastfetch"
+# Simple, fast and user-friendly alternative to find
+brew "fd"
+# Command-line fuzzy finder written in Go
+brew "fzf"
+# GitHub command-line tool
+brew "gh"
+# Agent multiplexer that lives in your terminal
+brew "herdr"
+# Lightweight and flexible command-line JSON processor
+brew "jq"
+# Ambitious Vim-fork focused on extensibility and agility
+brew "neovim"
+# Prompt theme engine for any shell
+brew "oh-my-posh"
+# Shell extension to navigate your filesystem faster
+brew "zoxide"
+# Fish-like fast/unobtrusive autosuggestions for zsh
+brew "zsh-autosuggestions"
+# Additional completion definitions for zsh
+brew "zsh-completions"
+# Fish shell like syntax highlighting for zsh
+brew "zsh-syntax-highlighting"

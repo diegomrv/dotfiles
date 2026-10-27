@@ -1,96 +1,70 @@
 # dotfiles
 
-Personal development environment configs. macOS primary, Linux/WSL compatible.
+Shell, editor and tool config for all my machines, linked into `$HOME` with [GNU Stow](https://www.gnu.org/software/stow/).
 
-Managed with [GNU Stow](https://www.gnu.org/software/stow/) -- symlinks everything to `$HOME` automatically.
+Every machine gets only the packages it needs: a server doesn't get Node, Zed or the Mac apps.
 
-## What's in here
+## Packages
 
-| Category | Tools | Config files |
-|----------|-------|-------------|
-| **Shell** | Zsh + Oh My Posh | `.zshrc`, `.aliases`, `.zsh/`, `.wolfius.omp.json` |
-| **Terminal** | Ghostty | `.config/ghostty/config` |
-| **Editors** | Neovim (LazyVim), Vim, Zed | `.config/nvim/`, `.vimrc`, `.config/zed/` |
-| **Git** | Git, GitHub CLI, lazygit | `.gitconfig`, `.config/gh/` |
-| **AI** | Claude Code | `claude-global/.claude/` |
-| **Other** | fastfetch, yazi, 1Password SSH | `.config/fastfetch/`, `.config/yazi/`, `.config/1Password/` |
-| **Fonts** | Hack Nerd Font, JetBrains Mono Nerd Font | `.fonts/` |
+| Package | What's in it | Who gets it |
+|---|---|---|
+| `shell` | zsh, aliases, Oh My Posh prompt, git, gh, nvim, vim, fastfetch, herdr | everyone |
+| `claude` | Claude Code: global CLAUDE.md, settings, hooks, shared skills, statusline | Macs, servers, ragnarok |
+| `dev` | Node (nvm, pnpm), PHP, localdev, worktrunk, Zed, Amp, opencode, workstation rules + skills for Claude | Macs |
+| `desktop` | Ghostty, yazi, fonts, video conversion helpers | Macs, ragnarok |
+| `macos` | CodexBar, 1Password SSH agent, keychain unlock over SSH | Macs |
 
-### Shell highlights
+## Machines
 
-- OS-aware config: macOS and Ubuntu/WSL get separate sourced files
-- [zoxide](https://github.com/ajgazrat/zoxide) for smart `cd`
-- [eza](https://github.com/eza-community/eza) for `ls`
-- zsh-autosuggestions + zsh-syntax-highlighting
-- NVM with auto `.nvmrc` switching on directory change
-- Machine-specific overrides via `.zshrc.local` (gitignored)
+Each machine has a folder in `machines/<hostname>/`:
 
-### Editor setup
+- `packages`: which packages to link
+- `Brewfile`: Homebrew packages (none on ragnarok, which uses pacman)
+- `host.zsh`: shell config for that machine only, sourced straight from the repo
 
-- **Neovim**: LazyVim framework with Lazy.nvim plugin manager
-- **Zed**: Gruvbox theme, Biome formatter for TS/TSX, JetBrains keymap
-- **Vim**: Molokai colorscheme, legacy config
+| Machine | What it is | Packages |
+|---|---|---|
+| bahamut | Mac mini M4, home | shell claude dev desktop macos |
+| highwind | MacBook | shell claude dev desktop macos |
+| kraken | homelab server, Ubuntu | shell claude |
+| hades | backup server, Ubuntu, off-site | shell claude |
+| ragnarok | gaming PC, CachyOS | shell claude desktop |
 
-### Terminal look
-
-- **Ghostty** with Hopscotch.256 theme, 95% opacity + blur
-- **Oh My Posh** custom prompt with git status, node version, execution time, and clock
+The repo lives at `~/mainframe/dotfiles` on the Macs and `~/dotfiles` on the Linux boxes.
 
 ## Setup
 
 ```bash
-git clone <this-repo> ~/dotfiles  # or wherever you want
+git clone git@github.com:diegomrv/dotfiles.git ~/dotfiles   # ~/mainframe/dotfiles on a Mac
 cd ~/dotfiles
-
-# 1. Install prerequisites (Homebrew, Zsh, Stow, NVM, pnpm, Claude Code)
-chmod +x setup.sh && ./setup.sh
-
-# 2. Install Homebrew packages + symlink dotfiles
-chmod +x install.sh && ./install.sh
+./install.sh
 ```
 
-That's it. Restart your terminal.
+A new machine needs `machines/<hostname>/packages` first (copy the closest one). `install.sh` then:
 
-### What the scripts do
+1. Installs Homebrew and the machine's Brewfile, if it has one
+2. Installs zsh and stow if missing, makes zsh the login shell
+3. Installs Claude Code (if `claude` is listed), and nvm + Node LTS + pnpm (if `dev` is listed)
+4. Removes every old link into the repo, then links the listed packages. Files in the way go to `~/.dotfiles-backup/<timestamp>/`
 
-**`setup.sh`** installs foundational tools:
-- Homebrew (if missing)
-- Zsh + sets as default shell
-- GNU Stow
-- NVM, pnpm, Claude Code
+`./install.sh --links` does only step 4. Run it after pulling a change that moves or removes files, or after editing a machine's `packages`.
 
-**`install.sh`** does the rest:
-- Runs `brew bundle` from this machine's `Brewfile.<hostname>`, if one exists
-- Runs `stow` to symlink everything to `$HOME`, first moving any existing file in the way to `~/.dotfiles-backup/<timestamp>/`
+After setup: sign into 1Password (SSH agent), `gh auth login`, and put secrets in `~/.zshrc.local`.
 
-### Manual steps after install
-
-- Sign into 1Password and enable the SSH agent
-- Sign into GitHub CLI: `gh auth login`
-- Import machine-specific overrides to `.zshrc.local` and `.gitconfig.local`
-
-## Brewfile
-
-Homebrew packages are tracked per machine in `Brewfile.<hostname>` (`bahamut`, `highwind`, `kraken`, `hades`) -- the machines deliberately carry different packages. To update the current machine's file after installing something new:
+## Homebrew
 
 ```bash
-brewsave            # dump this machine into its own Brewfile
-brewinstall         # install from this machine's Brewfile
-brewdiff            # what bahamut has that highwind doesn't
-brewdiff kraken bahamut   # ...or any other pair
+brewsave             # write this machine's installed packages to its Brewfile
+brewinstall          # install from this machine's Brewfile
+brewdiff             # what bahamut has that highwind doesn't
+brewdiff kraken hades
 ```
 
-## Adding new dotfiles
+`brew bundle` never uninstalls. To remove what's no longer listed: `brew bundle cleanup --file=machines/<host>/Brewfile --force`.
 
-1. Place the file at the repo root, mirroring its `$HOME` path (e.g., `.config/tool/config`)
-2. Run `stow -t "$HOME" .` to create the symlink (move the original out of `$HOME` first, or stow reports a conflict)
-3. If the file shouldn't be symlinked, add it to `.stow-local-ignore`
-4. If it's machine-specific, add it to `.gitignore`
+## Adding things
 
-## Machine-specific config
-
-These files are gitignored and loaded if present:
-
-- **`.zshrc.local`** -- extra shell config (e.g., Laravel Herd paths)
-- **`.gitconfig.local`** -- local git overrides (e.g., signing keys)
-- **`.claude/settings.local.json`** -- local Claude Code settings
+- **A config file:** put it in the right package at its `$HOME` path (e.g. `dev/.config/tool/config`), then `./install.sh --links`.
+- **Shell config for one package:** `<package>/.zsh/conf.d/<name>.zsh`. `.zshrc` sources every file in `~/.zsh/conf.d/`.
+- **Shell config for one machine:** `machines/<host>/host.zsh`.
+- **Secrets:** `~/.zshrc.local` and `~/.gitconfig.local` (never tracked).

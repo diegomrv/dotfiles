@@ -1,0 +1,4 @@
+# Stow packages linked on ragnarok (gaming PC, CachyOS). No Brewfile: packages come from pacman.
+shell
+claude
+desktop

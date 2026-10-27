@@ -1,52 +1,25 @@
 .idea
-.Trash-*
 .DS_Store
+._*
 .uuid
+.Trash-*
 
-# Specific stuff
-.config/gcloud/
-.config/intelephense/
-.config/raycast/
-.config/jgit/
-.config/valet/
-.config/configstore/
-.config/soloterm/
-.config/psysh/
-.config/zed/prompts/
-.config/higgsfield/
+# Machine-specific config, never tracked
+.zshrc.local
+.gitconfig.local
+.claude/settings.local.json
 
-# Runtime files
 *.log
 *.sock
 
-# macOS
-.DS_Store?
-._*
-.Spotlight-V100
-.Trashes
-ehthumbs.db
-Thumbs.db
+# Runtime state apps write inside the ~/.config/<app> folders that stow links
+# whole into a package (only the config files themselves are tracked)
+shell/.config/herdr/*
+!shell/.config/herdr/config.toml
+dev/.config/opencode/*
+!dev/.config/opencode/opencode.jsonc
+dev/.config/zed/prompts/
+macos/.config/codexbar/*.lock
 
-.config/syncthing
-
-# Machine-specific config
-.zshrc.local
-.gitconfig.local
-
-# Project-level Claude settings (not global)
-.claude/settings.local.json
-
-# CLI caches / runtime state
-.config/gws/cache/
-.config/herdr/*
-!.config/herdr/config.toml
-.config/herdr-mobile-dev/
-
-# Installer-managed skill symlinks (npx skills), machine-specific
-.config/opencode/skills/
-
-# Claude Code's claude.ai skill sync (~/.claude/skills is stow-folded into this repo)
-claude-global/.claude/skills/synced/
-
-# App lock files
-.config/codexbar/*.lock
+# Claude Code's claude.ai skill sync, and skills installed by `npx skills` (symlinks, per machine)
+claude/.claude/skills/synced/
