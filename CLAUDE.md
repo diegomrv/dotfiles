@@ -33,12 +33,12 @@ stow -n -v -t "$HOME" .
 - `.zshrc` - Main config, detects OS and sources appropriate file
 - `.zsh/macos.zsh` - macOS-specific (Homebrew paths, php@8.4 CLI, localdev `wt`/`dev` on PATH)
 - `.zsh/ubuntu.zsh` - Linux/WSL-specific (LinuxBrew, Wayland)
-- `.zsh/hosts/<hostname>.zsh` - Per-machine config, **tracked in git**, auto-sourced by `.zshrc` based on hostname (`bahamut` = Mac mini, `highwind` = MacBook, `kraken` = homelab server). NON-SECRET config only.
+- `.zsh/hosts/<hostname>.zsh` - Per-machine config, **tracked in git**, auto-sourced by `.zshrc` based on hostname (`bahamut` = Mac mini, `highwind` = MacBook, `kraken` = homelab server, `hades` = backup box). NON-SECRET config only.
 - `.zshrc.local` - Machine-specific **secrets** + overrides (gitignored -- API keys)
 - `.aliases` - Custom shell aliases
 
 ### Homebrew Packages
-- `Brewfile.<hostname>` - One Brewfile per machine (`Brewfile.bahamut` = Mac mini, `Brewfile.highwind` = MacBook, `Brewfile.kraken` = homelab server on Linuxbrew). The machines deliberately carry different packages, so there is no shared Brewfile.
+- `Brewfile.<hostname>` - One Brewfile per machine (`Brewfile.bahamut` = Mac mini, `Brewfile.highwind` = MacBook, `Brewfile.kraken` = homelab server, `Brewfile.hades` = backup box, both on Linuxbrew). The machines deliberately carry different packages, so there is no shared Brewfile.
 - `brewsave` dumps the current machine into its own file, `brewinstall` installs from it, `brewdiff [a] [b]` lists what one machine has that another doesn't, defaulting to the two Macs (all defined in `.aliases`).
 - All three resolve the repo through `$DOTFILES_DIR`, which `.aliases` derives from the `~/.aliases` stow symlink — the repo lives at `~/mainframe/dotfiles` on the Macs but `~/dotfiles` on kraken.
 - `brew bundle` never uninstalls. To drop packages that are no longer listed: `brew bundle cleanup --file=Brewfile.<hostname>` (add `--force` to actually remove them).

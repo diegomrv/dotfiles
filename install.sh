@@ -11,6 +11,11 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 HOST_NAME="$(scutil --get LocalHostName 2>/dev/null || hostname -s)"
 BREWFILE="$SCRIPT_DIR/Brewfile.$HOST_NAME"
 
+# Fresh Linux box: brew is installed but not on PATH until the stowed .zshrc loads
+if ! command -v brew &>/dev/null && [[ -x /home/linuxbrew/.linuxbrew/bin/brew ]]; then
+  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+fi
+
 echo ""
 if ! command -v brew &>/dev/null; then
   echo "=== Homebrew not found, skipping packages (run ./setup.sh to install it) ==="
