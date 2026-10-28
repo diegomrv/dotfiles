@@ -16,6 +16,7 @@ Where shell config goes:
 - `shell/.zshrc`: only what every machine needs. No OS or role branches in it
 - `<package>/.zsh/conf.d/<name>.zsh`: anything tied to a package (nvm lives in `dev`, keychain unlock in `macos`). `.zshrc` sources `~/.zsh/conf.d/*.zsh`
 - `machines/<host>/host.zsh`: one machine only. `~/.zshrc.local`: secrets, never tracked
+- `shell/.zsh/conf.d/autopull.zsh`: kraken, hades and ragnarok set `AUTOPULL=(...)` in `host.zsh`, and those repos get fast-forwarded before the first prompt, at most every 12 hours. So a change pushed here reaches them the next time Diego opens a shell there, not right away
 
 Claude Code instructions are split the same way: `claude/.claude/CLAUDE.md` is for every machine; Mac-only instructions (mainframe, Obsidian, gwsa, agent-browser) are in `dev/.claude/rules/workstation.md`, loaded as a user-level rule. Skills that only make sense on the Macs go in `dev/.claude/skills/`.
 

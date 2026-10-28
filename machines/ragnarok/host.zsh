@@ -20,3 +20,6 @@ alias update="sudo pacman -Syu"
 alias rmpkg="sudo pacman -Rsn"
 alias jctl="journalctl -p 3 -xb"
 alias rip="expac --timefmt='%Y-%m-%d %T' '%l\t%n %v' | sort | tail -200 | nl"
+
+# Fast-forward these repos before the first prompt, at most every 12 hours (shell/.zsh/conf.d/autopull.zsh)
+AUTOPULL=(~/dotfiles)

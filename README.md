@@ -49,6 +49,8 @@ A new machine needs `machines/<hostname>/packages` first (copy the closest one).
 
 `./install.sh --links` does only step 4. Run it after pulling a change that moves or removes files, or after editing a machine's `packages`.
 
+**The Linux boxes update themselves.** kraken, hades and ragnarok list their repos in `AUTOPULL` in `host.zsh`. When you open a shell there, at most once every 12 hours, they fast-forward those repos and relink if a pull added or removed files in one of their packages. Local changes or commits that block a fast-forward just get a warning. `autopull -f` checks right now. The Macs pull by hand.
+
 After setup: sign into 1Password (SSH agent), `gh auth login`, and put secrets in `~/.zshrc.local`.
 
 ## Homebrew

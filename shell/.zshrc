@@ -1,5 +1,5 @@
 # Shared by every machine. What only some machines need lives elsewhere:
-#   ~/.zsh/conf.d/*.zsh                       one drop-in per stowed package (dev, desktop, macos)
+#   ~/.zsh/conf.d/*.zsh                       drop-ins from the stowed packages (shell, dev, desktop, macos)
 #   $DOTFILES_DIR/machines/<host>/host.zsh    this machine only (tracked, non-secret)
 #   ~/.zshrc.local                            secrets and local overrides (untracked)
 
