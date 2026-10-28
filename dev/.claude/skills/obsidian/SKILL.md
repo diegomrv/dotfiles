@@ -14,7 +14,7 @@ Repos hold the docs agents and teammates need. The vault holds what Diego wants 
 | Vault | `~/Library/Mobile Documents/iCloud~md~obsidian/Documents/Wolfius Vault/` |
 | Machines | Mac Mini (bahamut) and MacBook (highwind), synced by iCloud. Not on kraken: `/mnt/media/Obsidian/` there is a dead Syncthing mirror, stale since Feb 2026. |
 | Format | Plain Markdown. Use Read / Edit / Write on the files. Obsidian.app does not need to be open. |
-| MCP | The `obsidian` MCP server is the Local REST API plugin on `127.0.0.1:27123`. It only connects while Obsidian.app is open. Handy for search or opening a note in the app, never required. If it failed to connect, use the files. |
+| No MCP | The `obsidian` MCP server was removed 2026-10-28: the files do everything it did except open notes in the app. Dataview blocks are queries, not content: to answer from one, read the query and look at the notes it selects. |
 
 Never touch `.obsidian/` (app config) or `.trash/` (Obsidian's recycle bin). Retire a note by moving it to `.trash/`, or to `07 - Archives/` if it has historical value. Don't `rm`.
 

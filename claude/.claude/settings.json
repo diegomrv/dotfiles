@@ -21,17 +21,6 @@
           }
         ]
       }
-    ],
-    "SubagentStart": [
-      {
-        "matcher": "tldraw-offline",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "s=\"$HOME/skills/tldraw-offline/inject-server-context.sh\"; [ -f \"$s\" ] && sh \"$s\" SubagentStart || true"
-          }
-        ]
-      }
     ]
   },
   "enableWorkflows": false,
