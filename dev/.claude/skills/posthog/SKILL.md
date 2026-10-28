@@ -1,6 +1,6 @@
 ---
 name: posthog
-description: Query or operate PostHog (product analytics: events, insights, dashboards, feature flags, persons, session data) from the terminal with `posthog-cli api`. Use whenever Diego asks about PostHog data or setup, e.g. for Tennet, Fenix, classlog or metal-dashboard, or before calling any PostHog MCP tool.
+description: "Query or operate PostHog (product analytics: events, insights, dashboards, feature flags, persons, session data) from the terminal with `posthog-cli api`. Use whenever Diego asks about PostHog data or setup, e.g. for Tennet, Fenix, classlog or metal-dashboard, or before calling any PostHog MCP tool."
 ---
 
 # Skill: posthog
