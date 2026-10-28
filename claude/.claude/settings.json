@@ -114,6 +114,8 @@
     ],
     "environment": [
       "$defaults",
+      "**Source control**: supersedes the default 'no additional orgs configured' entry. Trusted orgs: github.com/diegomrv (Diego's personal account) and github.com/thestrangepixels (his agency, StrangePixels), and the repos under them. This sets the trust boundary only; it is not consent for any soft-blocked action. Forks of third-party code under these accounts are still external code. thestrangepixels repos can hold client material, which stays in its own repo",
+      "**Repository visibility**: these repos are public, treat them as public: diegomrv/dotfiles, diegomrv/gwsa, diegomrv/metal-dashboard, diegomrv/threejsexperiment, diegomrv/chaoswindow, diegomrv/library-book-manager. diegomrv/dotfiles is the highest-risk one: never commit tokens, .env files, shell history or SSH material there. Every other repo under diegomrv and thestrangepixels was private as of 2026-10-28; a repoVisibility meta line showing public or unverified overrides this list",
       "**Org-specific CLIs**: agent-browser (required for all browser automation/visual checks per CLAUDE.md; do not use claude-in-chrome MCP tools unless Diego explicitly asks for his real Chrome session)"
     ]
   },
