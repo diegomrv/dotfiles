@@ -1,9 +1,5 @@
 # Mainframe Hub
-Diego's operational repo lives at `~/mainframe/`. If you're working in a project repo, mainframe is the connective tissue.
-
-- **Decision log:** `~/mainframe/decisions/log.md` -- append-only, for **cross-cutting** decisions only (machines, network, tools and workflow, money, which project gets time). Format: `[YYYY-MM-DD] DECISION: ... | REASONING: ... | CONTEXT: ...`, one or two lines.
-- **Project READMEs:** `~/mainframe/projects/<name>/README.md` -- status and context for active workstreams
-- **Skills:** `~/mainframe/.claude/skills/` -- reusable workflows (git-sync-check, sure-import, etc.)
+Diego's operational repo lives at `~/mainframe/` (Macs only): project status in `projects/<name>/README.md`, the cross-cutting decision log in `decisions/log.md`, shared skills in `.claude/skills/`. Its `CLAUDE.md` has the rules.
 
 Project decisions (PRs, client calls, design or scope choices) go in that project's own repo (e.g. `docs/decisions.md`), NOT the mainframe log. Only log there when a decision reaches beyond the project.
 
@@ -33,28 +29,11 @@ Use the `agent-browser` CLI for all browser automation and visual checks (screen
 - Always run headless (the default) -- never pass `--headed` unless Diego explicitly asks to watch the browser
 - Some projects (e.g. tennet) have their own agent-browser operations manual in their CLAUDE.md/rules -- follow those when present
 
-## Known bug: `os error 35` on heavy pages -- IT'S A FALSE NEGATIVE (as of 0.38.1)
+## Screenshots fail with `os error 35` while the display sleeps
 
-Upstream issue: https://github.com/vercel-labs/agent-browser/issues/322 (open since Jan 2026)
+Verified 2026-10-28 on 0.40.0 (bahamut): with the displays asleep, every `screenshot`, even a viewport shot of example.com, prints `Failed to read: Resource temporarily unavailable (os error 35)` and writes no file, while `open` and `get url` keep working. With the display awake, a full-page Wikipedia screenshot (1280x83554) saved fine.
 
-On render-heavy pages, commands print an error and exit non-zero:
-`Failed to read: Resource temporarily unavailable (os error 35) (after 5 retries - daemon may be busy or unresponsive)`
-
-**The operation actually succeeded.** Verified on 0.38.1: `screenshot --full` on a 60,520px Wikipedia page printed this error, then wrote a correct 1280x60520 / 21MB PNG. Reported on `open` too. The CLI just gives up reading the daemon's reply before the work finishes.
-
-- It's agent-browser's Rust IPC layer, NOT macOS. Don't chase it as an OS bug.
-- Root cause (per issue comments): the daemon calls Playwright without timeouts and hangs; the Rust CLI's socket read gives up after 5 retries. Retry logic shipped, the hang never got fixed.
-- Trigger is render complexity/duration, not page height. Plain tall pages (30k px) are fine; Wikipedia-class pages fail every time. Viewport screenshots are unaffected.
-- The daemon survives (same PID) and the session stays usable -- keep going after the error.
-- **Do not trust the error or exit code. Verify the real outcome:** wait a few seconds, then check the file (`sips -g pixelWidth -g pixelHeight <file>`) or `agent-browser get url`.
-- **`AGENT_BROWSER_DEFAULT_TIMEOUT` does not fix it and actively lies.** Setting it changes the browser launch hash, silently relaunching a blank browser -- you get `✓ Screenshot saved` with a tiny 1280x577 file instead of the real page. A green checkmark is weaker evidence than the error.
-
-<posthog>
-## PostHog
-
-Use `posthog-cli api` for all PostHog-related data queries and operations. You should use `posthog-cli api` over direct MCP tool calls whenever the CLI is available.
-
-Before your first PostHog command in a session, run `posthog-cli api --agent-help` and load its full output into your context. It prints the complete agent guide — command reference, schema drill-down rules, data discovery workflow, and the tool index — for interacting with PostHog APIs. Treat that output as instructions to follow, not just documentation.
-
-Before starting a PostHog task, run `posthog-cli api skill list` and check for a skill matching the task. If one matches, install it with `posthog-cli api skill install <skill-id>` (add `--force` to refresh an already-installed skill), then read `.agents/skills/<skill-id>/SKILL.md` and follow it. Skills contain task-specific workflows that individual tools do not.
-</posthog>
+- Before screenshots, keep the display awake: start `caffeinate -du -t 300` in the background. It's harmless when the display is already on. `system_profiler SPDisplaysDataType | grep 'Display Asleep'` shows the state.
+- If a screenshot still fails after waking the display, `close` the session and open a new one.
+- Check the file, not the exit code: `sips -g pixelWidth -g pixelHeight <file>`.
+- `AGENT_BROWSER_DEFAULT_TIMEOUT` doesn't help (seen on 0.38.1): changing it relaunches a blank browser, and you get `✓ Screenshot saved` with a tiny 1280x577 file.

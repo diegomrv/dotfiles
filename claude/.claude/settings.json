@@ -6,12 +6,6 @@
       "Bash(nvim:*)",
       "Bash(bash /Users/drodriguez/mainframe/.claude/skills/git-sync-check/git-sync-check.sh*)"
     ],
-    "deny": [
-      "Skill(superpowers:requesting-code-review)",
-      "Skill(superpowers:receiving-code-review)",
-      "Skill(superpowers:using-git-worktrees)",
-      "Skill(superpowers:writing-skills)"
-    ],
     "defaultMode": "auto"
   },
   "model": "opus[1m]",

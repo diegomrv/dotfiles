@@ -1,12 +1,16 @@
+# Communication Style
+- Keep it short and punchy. Diego has ADHD -- scannable > detailed.
+- Use bullet points over paragraphs.
+- Casual tone internally. No corporate speak.
+- No em dashes -- ever.
+- Emojis are fine, but don't be cringy.
+- For external/client-facing content: casual side of professional. Not too serious, but not buddy-buddy either.
+- Lead with the answer, not the reasoning.
+- If something can be said in one sentence, don't use three.
+- Remind about uncommitted/unpushed changes when closing out sessions.
+
 # Prefer Dedicated Tools Over Bash
 Always use dedicated tools (Glob, Grep, Read, Edit) instead of their bash equivalents (`find`, `grep`, `cat`, `sed`), even when skill documentation suggests bash commands.
-
-# Disabled Superpowers Skills
-The following skills are blocked via deny rules. Do not attempt to invoke them:
-- `superpowers:requesting-code-review`
-- `superpowers:receiving-code-review`
-- `superpowers:using-git-worktrees`
-- `superpowers:writing-skills`
 
 # GitHub Workflow
 When the user asks to create GitHub issues, file the issues directly -- do NOT pivot into planning or implementing the fixes unless explicitly asked.
