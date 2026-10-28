@@ -10,7 +10,7 @@ Every machine gets only the packages it needs: a server doesn't get Node, Zed or
 |---|---|---|
 | `shell` | zsh, aliases, Oh My Posh prompt, git, gh, nvim, vim, fastfetch, herdr | everyone |
 | `claude` | Claude Code: global CLAUDE.md, settings, hooks, shared skills, statusline | Macs, servers, ragnarok |
-| `dev` | Node (nvm, pnpm), PHP, localdev, worktrunk, Zed, Amp, opencode, workstation rules + skills for Claude | Macs |
+| `dev` | Node (nvm, pnpm), PHP, localdev, worktrunk, Zed, opencode, workstation rules + skills for Claude | Macs |
 | `desktop` | Ghostty, yazi, fonts, video conversion helpers | Macs, ragnarok |
 | `macos` | CodexBar, 1Password SSH agent, keychain unlock over SSH | Macs |
 
