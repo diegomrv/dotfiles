@@ -26,3 +26,6 @@ When generating shell commands that include dollar signs, special characters, or
 
 # Infrastructure & Environment Notes
 Port-22 timeouts from home were the UniFi gateway IPS (signature "ET SCAN Potential SSH Scan OUTBOUND": 5+ SSH connections in 120s from one host got blocked). Suppressed on 2026-09-04; see `references/home-network.md` in mainframe (Macs). If SSH bursts start timing out again while port 443 works, check that suppression first, not the ISP. SSH-over-443 remains a valid fallback for servers that offer it.
+
+# Linux Servers
+On kraken and hades, the machine's docs and maintenance log are in `~/homelab-docs` (its CLAUDE.md says which files belong to which machine). Read them before changing the machine, and log every change there. Mainframe and its decision log exist only on the Macs.

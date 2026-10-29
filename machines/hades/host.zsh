@@ -2,4 +2,4 @@
 # Tracked in git. NON-SECRET config only -- secrets go in ~/.zshrc.local
 
 # Fast-forward these repos before the first prompt, at most every 12 hours (shell/.zsh/conf.d/autopull.zsh)
-AUTOPULL=(~/dotfiles)
+AUTOPULL=(~/dotfiles ~/homelab-docs)
