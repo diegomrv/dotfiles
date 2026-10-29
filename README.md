@@ -2,7 +2,7 @@
 
 Shell, editor and tool config for all my machines, linked into `$HOME` with [GNU Stow](https://www.gnu.org/software/stow/).
 
-Every machine gets only the packages it needs: a server doesn't get Node, Zed or the Mac apps.
+Every machine gets only the packages it needs: a server doesn't get the dev toolchain, Zed or the Mac apps.
 
 ## Packages
 

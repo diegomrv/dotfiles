@@ -1,5 +1,6 @@
 # Ubuntu packages for hades (26.04). ./install.sh installs them with apt-get.
-# Server toolset: shell, git and herdr only. No Node, pnpm or other dev tooling.
+# Server toolset: shell, git and herdr only. No pnpm or other dev tooling.
+# Exception: Node, only so the Claude Code statusline (npx ccstatusline) runs.
 # Not in apt, so install.sh gets them from upstream into ~/.local/bin: oh-my-posh, herdr.
 zsh
 stow
@@ -10,6 +11,8 @@ fzf
 gh
 jq
 neovim
+nodejs
+npm         # provides npx; Ubuntu splits it into ~360 small node-* packages
 unzip       # the oh-my-posh installer needs it
 zoxide
 zsh-autosuggestions
