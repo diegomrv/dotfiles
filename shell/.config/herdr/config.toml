@@ -12,6 +12,7 @@ dark_name = "rose-pine"
 
 [ui]
 agent_panel_sort = "priority"
+prompt_new_tab_name = false
 show_agent_labels_on_pane_borders = false
 hide_tab_bar_when_single_tab = false
 tab_bar_right = [
@@ -22,8 +23,8 @@ tab_bar_right = [
 tab_bar_right_separator = " · "
 
 # Claude Code puts its current task in the terminal title; show it under each agent row.
-[ui.sidebar.agents.rows_by_agent]
-claude = [["state_icon", "workspace", "tab"], ["terminal_title_stripped"], ["agent"]]
+[ui.sidebar.agents]
+rows = [["state_icon", "machine", "workspace", "tab"], ["terminal_title_stripped"], ["agent"]]
 
 [ui.toast]
 delivery = "herdr"
@@ -31,3 +32,10 @@ delivery = "herdr"
 [experimental]
 # Save recent pane screen history across full server restarts.
 pane_history = true
+
+# herdr-file-viewer plugin: ctrl+b, f opens / focuses / closes the viewer in a split.
+[[keys.command]]
+key = "prefix+f"
+type = "plugin_action"
+command = "herdr-file-viewer.open-file-viewer"
+description = "open file viewer in split"
