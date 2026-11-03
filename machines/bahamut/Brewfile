@@ -123,4 +123,5 @@ cask "typewhisper/tap/typewhisper", trusted: true
 uv "terrahour"
 npm "@llamaindex/liteparse"
 npm "@posthog/cli"
+npm "agent-desktop"
 npm "corepack"

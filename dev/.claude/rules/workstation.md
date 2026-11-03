@@ -37,3 +37,13 @@ Verified 2026-10-28 on 0.40.0 (bahamut): with the displays asleep, every `screen
 - If a screenshot still fails after waking the display, `close` the session and open a new one.
 - Check the file, not the exit code: `sips -g pixelWidth -g pixelHeight <file>`.
 - `AGENT_BROWSER_DEFAULT_TIMEOUT` doesn't help (seen on 0.38.1): changing it relaunches a blank browser, and you get `✓ Screenshot saved` with a tiny 1280x577 file.
+
+# Desktop Automation
+Use the `agent-desktop` CLI to see and operate native Mac apps (Finder, System Settings, any desktop app). The built-in computer-use MCP is turned off. Websites still go through `agent-browser`. Installed on bahamut only (npm global under nvm): if `command -v agent-desktop` finds nothing, say so instead of installing it.
+
+- First run in a session: `agent-desktop skills get desktop` and `agent-desktop skills get platform`, and follow them.
+- The loop: `snapshot --app <App> -i`, act on a ref from that snapshot, snapshot again to verify. Refs belong to their snapshot; on `STALE_REF` take a new one.
+- It drives Diego's real apps, not a sandbox. Reading (snapshot, screenshot, list-apps, list-windows) is fine; ask before anything that sends, deletes, submits or changes settings.
+- Stay headless (the default). Never pass `--headed` unless Diego asks: it moves the real pointer and takes focus.
+- Snapshots, screenshots and clipboard reads can hold private screen content. Keep them in the scratchpad, never in a repo.
+- `PERM_DENIED`: run `agent-desktop permissions`. Sessions here run in Herdr terminals, so Accessibility and Screen Recording must be granted to `~/.local/bin/herdr-core` (System Settings > Privacy & Security, +, then ⌘⇧G). It takes effect without restarting anything.
