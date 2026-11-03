@@ -20,6 +20,9 @@ dev/.config/opencode/*
 !dev/.config/opencode/opencode.jsonc
 dev/.config/zed/prompts/
 macos/.config/codexbar/*.lock
+# Themes Herdr.app ships and rewrites; the hand-made ones next to them are tracked
+macos/.config/herdr-app/themes/atom-one-dark.json
+macos/.config/herdr-app/themes/win98.json
 
 # Claude Code's claude.ai skill sync, and skills installed by `npx skills` (symlinks, per machine)
 claude/.claude/skills/synced/
