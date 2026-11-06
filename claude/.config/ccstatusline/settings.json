@@ -28,25 +28,8 @@
     ],
     [
       {
-        "id": "709b1cd8-a716-4eea-8e2f-2459f4191d25",
-        "type": "block-timer",
-        "color": "brightBlue"
-      },
-      {
-        "id": "20d434b4-27fe-4998-b0ff-c6bea77369b3",
-        "type": "separator"
-      },
-      {
         "id": "84376213-489e-422a-ad40-84b61edc51b0",
         "type": "context-percentage-usable"
-      },
-      {
-        "id": "bf53aa4f-24e8-487b-86c2-203684bb8d6b",
-        "type": "separator"
-      },
-      {
-        "id": "33e9a416-299b-44f5-ab02-476b3b01cc1c",
-        "type": "session-usage"
       }
     ],
     [
