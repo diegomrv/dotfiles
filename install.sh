@@ -93,8 +93,6 @@ link_packages() {
   # Real directories, so stow links what's inside instead of folding the whole
   # directory into the repo (apps would then write their state into the repo)
   mkdir -p "$HOME/.config" "$HOME/.claude/skills" "$HOME/.zsh/conf.d"
-  # Herdr.app keeps sockets and state in ~/.config/herdr-app; only themes/ folds
-  if uses macos; then mkdir -p "$HOME/.config/herdr-app"; fi
 
   # No --adopt: it moves existing files INTO the repo, over the tracked ones.
   # Move anything in the way to a timestamped backup instead, then stow normally.
