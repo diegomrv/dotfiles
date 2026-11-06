@@ -87,6 +87,7 @@ Run independent calls (personal + work, several accounts or services) in paralle
   ```
 
 - **`403: Caller does not have required permission to use project <id>`** (usually the first call from `work`): the account has no IAM role on the Cloud project that owns the OAuth client. The error includes the IAM grant URL; the fix is a one-time grant (Editor or Service Usage Consumer), not a re-login. The existing token works once it propagates (~30 s).
+- **`403 appNotAuthorizedToFile: The user has not granted the app <id> write access to the file`**: the token has `drive.readonly` + `drive.file` (what `-s drive` grants), so it reads any file but writes only files gwsa created. Commenting on or editing someone else's file (a client's Google Doc) needs the full `https://www.googleapis.com/auth/drive` scope. Since 2026-11-05 `work` has it; `personal` doesn't. To add it: re-login with the current scope list (from `gwsa whoami <account>`) plus that one, `gwsa setup <account> --scopes "<comma list>"` (same background + `open` flow as above). Then move `credentials/<account>/token_cache.json` aside (rename, don't read it): the cached access token keeps the old scopes until it expires (~1 h), so calls still fail right after a successful re-login. Delete the renamed copy once a call works.
 - **`gws: command not found`**: `brew install googleworkspace-cli`. `gwsa` itself is the symlink in `~/.local/bin`.
 - Report the actual error message. Do not fall back to the claude.ai Gmail / Calendar / Drive MCPs on your own.
 
