@@ -92,7 +92,7 @@ unlink_all() {
 link_packages() {
   # Real directories, so stow links what's inside instead of folding the whole
   # directory into the repo (apps would then write their state into the repo)
-  mkdir -p "$HOME/.config" "$HOME/.claude/skills" "$HOME/.zsh/conf.d"
+  mkdir -p "$HOME/.config" "$HOME/.claude/skills" "$HOME/.codex" "$HOME/.zsh/conf.d"
 
   # No --adopt: it moves existing files INTO the repo, over the tracked ones.
   # Move anything in the way to a timestamped backup instead, then stow normally.
@@ -213,6 +213,9 @@ echo "=== Linking dotfiles for $HOST_NAME ==="
 have stow || { echo "stow not found: run ./install.sh without --links first"; exit 1; }
 unlink_all
 link_packages
+
+# The pre-commit hook rebuilds Codex's AGENTS.md (see build-codex-agents.sh)
+git -C "$DOTFILES" config core.hooksPath .githooks
 
 echo ""
 echo "Done. Open a new terminal, or run: source ~/.zshrc"

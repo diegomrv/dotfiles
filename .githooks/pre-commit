@@ -1,0 +1,8 @@
+#!/bin/bash
+# Rebuild Codex's AGENTS.md from the Claude Code instructions and stage it, so a
+# commit that touches the sources always carries the matching output.
+# install.sh points git here (core.hooksPath).
+set -euo pipefail
+root="$(git rev-parse --show-toplevel)"
+"$root/build-codex-agents.sh"
+git -C "$root" add dev/.codex/AGENTS.md

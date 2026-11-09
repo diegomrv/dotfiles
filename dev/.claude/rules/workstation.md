@@ -27,6 +27,7 @@ Use the `agent-browser` CLI for all browser automation and visual checks (screen
 - First run: `agent-browser skills get core --full` to load usage patterns
 - Use `--session <name>` for isolation
 - Always run headless (the default) -- never pass `--headed` unless Diego explicitly asks to watch the browser
+- Close every session you open when you're done. Subagents you hand browser work to follow the same rules
 - Some projects (e.g. tennet) have their own agent-browser operations manual in their CLAUDE.md/rules -- follow those when present
 
 ## Screenshots fail with `os error 35` while the display sleeps

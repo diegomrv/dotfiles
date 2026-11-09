@@ -19,6 +19,10 @@ shell/.config/herdr/*
 dev/.config/opencode/*
 !dev/.config/opencode/opencode.jsonc
 dev/.config/zed/prompts/
+# ~/.codex must stay a real directory (install.sh creates it); this only guards
+# against stow folding it, since Codex keeps auth.json and history in there
+dev/.codex/*
+!dev/.codex/AGENTS.md
 macos/.config/codexbar/*.lock
 
 # Claude Code's claude.ai skill sync, and skills installed by `npx skills` (symlinks, per machine)

@@ -10,7 +10,7 @@ Every machine gets only the packages it needs: a server doesn't get the dev tool
 |---|---|---|
 | `shell` | zsh, aliases, Oh My Posh prompt, git, gh, nvim, vim, fastfetch, herdr | everyone |
 | `claude` | Claude Code: global CLAUDE.md, settings, hooks, shared skills, statusline | Macs, servers, ragnarok |
-| `dev` | Node (nvm, pnpm), PHP, localdev, worktrunk, Zed, opencode, workstation rules + skills for Claude | Macs |
+| `dev` | Node (nvm, pnpm), PHP, localdev, worktrunk, Zed, opencode, workstation rules + skills for Claude, Codex's global `AGENTS.md` | Macs |
 | `desktop` | Ghostty, yazi, fonts, video conversion helpers | Macs, ragnarok |
 | `macos` | CodexBar, 1Password SSH agent, keychain unlock over SSH | Macs |
 
@@ -45,7 +45,7 @@ A new machine needs `machines/<hostname>/packages` first (copy the closest one).
 1. Installs Homebrew and the machine's Brewfile, or its `apt` list, whichever it has
 2. Installs zsh and stow if missing, makes zsh the login shell. Links `fdfind` to `fd` (Ubuntu's name), and installs oh-my-posh and herdr into `~/.local/bin` from upstream if no package manager provided them
 3. Installs Claude Code (if `claude` is listed), and nvm + Node LTS + pnpm (if `dev` is listed)
-4. Removes every old link into the repo, then links the listed packages. Files in the way go to `~/.dotfiles-backup/<timestamp>/`
+4. Removes every old link into the repo, then links the listed packages. Files in the way go to `~/.dotfiles-backup/<timestamp>/`. Also points git at `.githooks/` (see Agent instructions)
 
 `./install.sh --links` does only step 4. Run it after pulling a change that moves or removes files, or after editing a machine's `packages`.
 
@@ -63,6 +63,14 @@ brewdiff bahamut kraken
 ```
 
 `brew bundle` never uninstalls. To remove what's no longer listed: `brew bundle cleanup --file=machines/<host>/Brewfile --force`.
+
+## Agent instructions
+
+Claude Code and Codex get the same rules from one source:
+
+- `claude/.claude/CLAUDE.md`: every machine. `dev/.claude/rules/workstation.md`: Mac-only (mainframe, Obsidian, gwsa, agent-browser)
+- `dev/.codex/AGENTS.md` (linked to `~/.codex/AGENTS.md`) is **generated** from those two plus a Codex-only tail, by `./build-codex-agents.sh`. Codex can't import files, hence the build
+- The `.githooks/pre-commit` hook rebuilds and stages it on every commit, so edit the sources, never the output
 
 ## Adding things
 
