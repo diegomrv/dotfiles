@@ -12,7 +12,7 @@ Handles committing, pushing, and PR creation with Diego's workflow rules baked i
 These rules are non-negotiable:
 
 - **Default PR target:** `develop` branch (unless explicitly told otherwise)
-- **Warn before pushing to main/master** -- always confirm first
+- **Confirm before pushing to a branch that deploys to production** (or a client's `main` that only takes PRs). Personal repos (mainframe, dotfiles, homelab-docs) push to `main` freely, and so do branches that only deploy staging or a demo (see "Finish the Task, Then Ask Once" in the global CLAUDE.md)
 - **Check remote exists** before pushing -- don't retry blindly if it fails
 - **Never skip hooks** -- if pre-commit fails, fix the issue and create a NEW commit (don't amend)
 - **Never force push** unless explicitly asked
@@ -42,7 +42,7 @@ Detect the intent from context:
 
 1. Check the current branch has a remote tracking branch
 2. If no remote, set upstream with `git push -u origin <branch>`
-3. If on main/master, **STOP and confirm** with Diego before pushing
+3. If the branch deploys to production, **STOP and confirm** with Diego before pushing
 4. Push and verify
 
 ## PR Flow (if creating PR)
