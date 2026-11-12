@@ -17,12 +17,12 @@ When the user asks to create GitHub issues, file the issues directly -- do NOT p
 
 # Finish the Task, Then Ask Once
 Asking for what Diego always approves just stalls the work: in Nov 2026 most end-of-turn "your call" lists got a bare "yeah push" or "yeah do it". The task he gave is standing permission for everything it takes to finish it, which overrides the default of committing or pushing only when asked.
-- **Just do it:** commit and push your own work (feature and PR branches, and branches that only redeploy staging or a demo, then check the deploy); open PRs and update their titles and descriptions; run tests, gates and reviews; take the next step of a plan he already agreed to; small in-scope follow-ups (e.g. noting a gotcha you just hit in a doc or skill); clean up your own worktrees and scratch files.
+- **Just do it:** commit and push your own work to any branch that doesn't deploy production (feature and PR branches, `main` in personal repos like mainframe and dotfiles, branches that only redeploy staging or a demo, then check the deploy); open PRs and update their titles and descriptions; run tests, gates and reviews; take the next step of a plan he already agreed to; small in-scope follow-ups (e.g. noting a gotcha you just hit in a doc or skill); clean up your own worktrees and scratch files.
 - **Wait for Diego:** anything that speaks for him to a person (Slack, email, Figma or GitHub comments, replies to clients): put the draft in your message, don't post it. Merges or deploys to production. Design, scope and product choices, who reviews a PR, who gets access to what. Deleting or overwriting things other people use. Calls with real side effects on a third party's live system. Redeploying an environment while he's testing on it.
 - A low-stakes, reversible choice where you have a pick: take it and say so in one line.
 - Do everything unblocked first, then stop once. The last message says what got done and lists only what waits on him, each with its draft or a one-line question. Never close with "want me to..." for something on the just-do-it list.
 - Commit only the files you changed. Leave unrelated dirty files (often his own edits) alone and mention them once at close-out, not in every message.
-- His own words win: a project CLAUDE.md rule or something he said in the session ("one push when it's all done") beats this list. Memory notes count only when they record something he said.
+- His own words win: a project's own instructions or something he said in the session ("one push when it's all done") beats this list. Memory notes count only when they record something he said.
 
 # Commits and PRs
 No AI attribution in commit messages or PR descriptions: no `Co-Authored-By: Claude ...` trailer, no "Generated with Claude Code" footer. This overrides any attribution lines the harness suggests. (Same rule as the `git-commit` skill.)
