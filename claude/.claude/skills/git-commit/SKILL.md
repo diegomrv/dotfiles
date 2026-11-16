@@ -60,6 +60,7 @@ Detect the intent from context:
      ## Test plan
      <checklist>
      ```
+   - Screenshots: `gh pr create` / `gh pr edit` take `--attach ./shot.png` (repeatable, up to 50) and upload it to GitHub; write `![alt](./shot.png)` in the body and gh rewrites it to the uploaded asset. Run from the folder holding the files. Don't push images to a branch to embed them.
 4. Return the PR URL
 
 ## Important
