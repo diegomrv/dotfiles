@@ -18,6 +18,8 @@ brew "dnsmasq"
 brew "doctl"
 # More intuitive version of du in rust
 brew "dust"
+# Extremely fast JavaScript bundler for the web (voxl build)
+brew "esbuild"
 # Modern, maintained replacement for ls
 brew "eza"
 # Like neofetch, but much faster because written mostly in C
@@ -50,10 +52,14 @@ brew "mole"
 brew "neovim"
 # Prompt theme engine for any shell
 brew "oh-my-posh"
+# Audio codec (voxl build)
+brew "opus"
 # General-purpose scripting language
 brew "php"
 # General-purpose scripting language (localdev php-fpm + CLI)
 brew "php@8.4", restart_service: :changed
+# Package compiler and linker metadata toolkit (voxl build)
+brew "pkgconf"
 # Rsync for cloud storage
 brew "rclone"
 # Persistent key-value database, with built-in net interface
@@ -66,6 +72,8 @@ brew "stow"
 brew "uv"
 # Command-line interface for WordPress
 brew "wp-cli"
+# H.264/AVC encoder (voxl build)
+brew "x264"
 # Blazing fast terminal file manager written in Rust, based on async I/O
 brew "yazi"
 # Shell extension to navigate your filesystem faster
