@@ -32,6 +32,8 @@ stow -n -v -d . -t "$HOME" shell claude   # preview what stow would do
 
 Never use `stow --adopt`: it moves existing `$HOME` files into the repo over the tracked ones. `install.sh` backs conflicts up to `~/.dotfiles-backup/<timestamp>/` instead.
 
+To link one new file or skill, run `stow -d . -t "$HOME" --ignore='\.DS_Store' <package>` (it only adds links), not `--links`. `--links` first removes every link, and apps that are running write into the gap: on 2026-11-24 a Claude session's statusline recreated `~/.config/ccstatusline/settings.json` with its defaults, and the herdr server recreated `~/.config/herdr/`. Stow then aborted and left the machine with no links at all (no `~/.zshrc`, no `~/.claude/CLAUDE.md`). If that happens, move the stray files to `~/.dotfiles-backup/` and stow again in the same command. A folded directory that got recreated (herdr) blocks the whole `shell` package with "source is an absolute symlink"; `--ignore='herdr'` links the rest.
+
 ## Gotchas
 
 - **This repo is public** (github.com/diegomrv/dotfiles). Nothing private goes in tracked files: no tokens, keys, `.env` content, shell history or client material. Secrets live in `~/.zshrc.local` and `~/.gitconfig.local`.

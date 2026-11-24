@@ -40,7 +40,7 @@ Verified 2026-10-28 on 0.40.0 (bahamut): with the displays asleep, every `screen
 - `AGENT_BROWSER_DEFAULT_TIMEOUT` doesn't help (seen on 0.38.1): changing it relaunches a blank browser, and you get `✓ Screenshot saved` with a tiny 1280x577 file.
 
 # Desktop Automation
-Use the `agent-desktop` CLI to see and operate native Mac apps (Finder, System Settings, any desktop app). The built-in computer-use MCP is turned off. Websites still go through `agent-browser`. Installed on bahamut only (npm global under nvm): if `command -v agent-desktop` finds nothing, say so instead of installing it.
+Use the `agent-desktop` CLI to see and operate native Mac apps (Finder, System Settings, any desktop app). The built-in computer-use MCP is turned off. Websites still go through `agent-browser`. Installed on bahamut only (npm global under nvm): if `command -v agent-desktop` finds nothing, say so instead of installing it. To only *look* at a Mac's screen (from any machine, no TCC grant needed in the session), use the `voxl` skill instead.
 
 - First run in a session: `agent-desktop skills get desktop` and `agent-desktop skills get platform`, and follow them.
 - The loop: `snapshot --app <App> -i`, act on a ref from that snapshot, snapshot again to verify. Refs belong to their snapshot; on `STALE_REF` take a new one.
